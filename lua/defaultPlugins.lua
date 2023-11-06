@@ -68,7 +68,7 @@ return {
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'iceberg',
+        theme = 'auto',
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
