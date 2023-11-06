@@ -22,6 +22,16 @@ return {
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+
+      -- Navbuddy, use :Navbuddy to quickly jump to objects and functions in buffer
+      {
+        "SmiteshP/nvim-navbuddy",
+        dependencies = {
+          "SmiteshP/nvim-navic",
+          "MunifTanjim/nui.nvim"
+        },
+        opts = { lsp = { auto_attach = true } }
+      }
     },
   },
 
@@ -59,8 +69,11 @@ return {
       options = {
         icons_enabled = true,
         theme = 'iceberg',
-        component_separators = '|',
-        section_separators = '',
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+        sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
+        -- component_separators = '/',
+        -- section_separators = '',
       },
     },
   },
