@@ -19,3 +19,6 @@ vim.keymap.set({'o', 'n', 'v'}, 'bb', '%')  --bb jumps to matching brackets
 vim.keymap.set({'o', 'n', 'v'}, 'bm', ']m') --bm and Bm jumps to next or previous method
 vim.keymap.set({'o', 'n', 'v'}, 'Bm', '[m')
 
+vim.keymap.set('n', '<leader>e', ':Explore<CR>') 
+
+

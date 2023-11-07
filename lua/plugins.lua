@@ -21,4 +21,25 @@ return {
 
 	-- java server
 	{ 'mfussenegger/nvim-jdtls' },
+
+	--use tab to escape from brackets
+	{
+		'boltlessengineer/smart-tab.nvim',
+		opts = {
+			-- default options:
+			-- list of tree-sitter node types to filter
+			skips = { "string_content" },
+			mapping = "<tab>",
+		}
+	},
+
+	-- Navbuddy, use :Navbuddy to quickly jump to objects and functions in buffer
+	{
+		"SmiteshP/nvim-navbuddy",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim"
+		},
+		opts = { lsp = { auto_attach = true } }
+	}
 }

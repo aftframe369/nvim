@@ -9,5 +9,5 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F5>', '<Esc>:w<CR>:! javac "%"; java % <CR>'
 --save, run script, open in new terminal in split window
 vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', ':w<CR>:tabnew %<CR>:term javac "%"; java % <CR>')
 
-vim.cmd 'set bg=dark'
+
 
