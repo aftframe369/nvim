@@ -21,4 +21,9 @@ vim.keymap.set({'o', 'n', 'v'}, 'Bm', '[m')
 
 vim.keymap.set('n', '<leader>e', ':Explore<CR>') 
 
+vim.keymap.set('n', '<Tab>', '}')  --Use tab to jump to next paragraph
+
+vim.keymap.set('v', '<C-c>', '"+y"')
+
+
 
