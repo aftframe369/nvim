@@ -8,8 +8,8 @@ vim.keymap.set({ 'o', 'n', 'v' }, '-', '$')                                     
 
 vim.keymap.set({'o', 'n', 'v'}, '<C-t>', '<Esc>:tabnew ')    -- ctrl - t makes a new tab (click enter to confirm)
 
-vim.keymap.set('n', 'J', ':m .-2<CR>==')        --use J and K to move lines up and down
-vim.keymap.set('n', 'K', ':m .+1<CR>==')
+vim.keymap.set('n', 'K', ':m .-2<CR>==')        --use J and K to move lines up and down
+vim.keymap.set('n', 'J', ':m .+1<CR>==')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -24,6 +24,7 @@ vim.keymap.set('n', '<leader>e', ':Explore<CR>')
 vim.keymap.set('n', '<Tab>', '}')  --Use tab to jump to next paragraph
 
 vim.keymap.set('v', '<C-c>', '"+y"')
+vim.api.nvim_set_keymap('n', '<leader><leader>', '<c-^>zz', { silent = false, noremap = true })
 
 
-
+  -- nmap('D', vim.lsp.buf.hover, 'Hover Documentation')  HOVER THE D - copy from lsp.lua, for reference
