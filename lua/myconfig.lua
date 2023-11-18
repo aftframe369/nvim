@@ -15,7 +15,7 @@ vim.g.maplocalleader = ' '
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = true
+vim.o.hlsearch = false 
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
