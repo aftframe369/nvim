@@ -153,6 +153,8 @@ null_ls.setup({
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.clang_format,
+    null_ls.builtins.formatting.google_java_format,
+
     null_ls.builtins.diagnostics.sqlfluff,
     null_ls.builtins.formatting.sqlfmt,
     -- null_ls.builtins.diagnostics.sqlfluff,
