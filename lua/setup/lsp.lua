@@ -153,12 +153,8 @@ null_ls.setup({
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.clang_format,
-<<<<<<< HEAD
     null_ls.builtins.diagnostics.sqlfluff,
-    null_ls.builtins.formatting.sqlfluff,
-=======
     null_ls.builtins.formatting.sqlfmt,
     -- null_ls.builtins.diagnostics.sqlfluff,
->>>>>>> 05333e0 (lsp)
   },
 })
