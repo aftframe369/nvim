@@ -29,5 +29,17 @@ remap('n', '<Tab>', '}')  --Use tab to jump to next paragraph
 remap('v', '<C-c>', '"+y"')
 remap('n', '<leader><leader>', '<c-^>zz', { silent = false, noremap = true, desc='Previous buffer' })
 
-remap(all, '<leader>w', '<c-w>', {desc='better map than C-w'})
-  -- nmap('D', vim.lsp.buf.hover, 'Hover Documentation')  HOVER THE Documentation - copy from lsp.lua, for reference
+
+remap({'n', 'v'}, '<leader>ws', ':sp<CR>', {desc='Split Horizontal'})
+remap({'n', 'v'}, '<leader>wv', ':vs<CR>', {desc='Split Vertically'})
+remap({'n', 'v'}, '<leader>wn', ':new<CR>', {desc='New window'})
+remap({'n', 'v'}, '<leader>wq', ':q<CR>', {desc='Close window'})
+remap({'n', 'v'}, '<leader>wx', '<C-w>x', {desc='Swap windows with previous'})
+remap({'n', 'v'}, '<leader>wj', '<C-w>j', {desc='Go to window j'})
+remap({'n', 'v'}, '<leader>wk', '<C-w>k', {desc='Go to window k'})
+remap({'n', 'v'}, '<leader>wh', '<C-w>h', {desc='Go to window h'})
+remap({'n', 'v'}, '<leader>wl', '<C-w>l', {desc='Go to window l'})
+remap({'n', 'v'}, '<leader>wp', '<C-w>p', {desc='Go to previous window'})
+remap({'n', 'v'}, '<leader>wt', '<C-w>t', {desc='Move current window to new Tab'})
+remap({'n', 'v'}, '<leader>w]', '<C-w>v<C-w><C-]>', {desc='open file in new window'})
+-- nmap('D', vim.lsp.buf.hover, 'Hover Documentation')  HOVER THE Documentation - copy from lsp.lua, for reference
