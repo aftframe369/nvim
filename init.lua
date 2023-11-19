@@ -1,6 +1,12 @@
 vim.g.mapleader=' '
 
 require 'lazypath'
+require('lazy').setup({
+  require 'themes',
+  require 'kickstart',
+  require 'plugins'
+}, {})
+
 require 'myconfig'
 require 'mappings'
 

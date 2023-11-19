@@ -11,7 +11,7 @@ return {
 	-- dsX - delete surrounding X
 	-- ysiw - use surround in word (very bad map tbh)
 	-- Sx - surround with x in visual mode
-	{ 'tpope/vim-surround' },
+	{ 'tpope/vim-surround', init = require( 'setup.surround' ) },
 
 	-- autopair brackets and quotes
 	{ 'jiangmiao/auto-pairs', },
@@ -22,6 +22,12 @@ return {
 	-- java server
 	{ 'mfussenegger/nvim-jdtls' },
 
+	-- Useful plugin to show you pending keybinds.
+	{ 'folke/which-key.nvim',           opts = {} },
+
+	-- Add indentation guides even on blank lines
+	{  require 'setup.blanklines' },
+    
 	--use tab to escape from brackets
 	{
 		'boltlessengineer/smart-tab.nvim',
@@ -41,5 +47,19 @@ return {
 			"MunifTanjim/nui.nvim"
 		},
 		opts = { lsp = { auto_attach = true } }
-	}
+	},
+
+	-- better file explorer
+	-- Some of the behaviors added by vinegar.vim would make excellent upstream additions. Many, the author would probably reject. Others are a bit too wild to even consider.
+
+	-- Press - in any buffer to hop up to the directory listing and seek to the file you just came from. Keep bouncing to go up, up, up. Having rapid directory access available changes everything.
+	-- All that annoying crap at the top is turned off, leaving you with nothing but a list of files. This is surprisingly disorienting, but ultimately very liberating. Press I to toggle until you adapt.
+	-- The oddly C-biased default sort order is replaced with a sensible application of 'suffixes'.
+	-- File hiding: files are not listed that match with one of the patterns in 'wildignore'.
+	-- If you put let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' in your vimrc, vinegar will initialize with dot files hidden. Press gh to toggle dot file hiding.
+	-- Press . on a file to pre-populate it at the end of a : command line. This is great, for example, to quickly initiate a :grep of the file or directory under the cursor. Type .!chmod +x and get :!chmod +x path/to/file.
+	-- Press y. to yank an absolute path for the file under the cursor.
+	-- Press ~ to go home.
+	-- Use Vim's built-in CTRL-^ (CTRL-6) for switching back to the previous buffer from the netrw buffer
+	{ 'tpope/vim-vinegar' },
 }

@@ -18,7 +18,7 @@ return {
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag='legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -26,16 +26,11 @@ return {
     },
   },
 
-
-
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
-
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
 
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -60,8 +55,8 @@ return {
       options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
         -- component_separators = '/',
         -- section_separators = '',
@@ -69,10 +64,6 @@ return {
     },
   },
 
-  {
-    -- Add indentation guides even on blank lines
-    require 'setup.blanklines',
-  },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',         opts = {} },
@@ -100,7 +91,6 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ":TSUpdate",
-  },
+  }
 
-  { import = 'plugins' }
 }
