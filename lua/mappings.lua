@@ -40,6 +40,6 @@ remap({'n', 'v'}, '<leader>wk', '<C-w>k', {desc='Go to window k'})
 remap({'n', 'v'}, '<leader>wh', '<C-w>h', {desc='Go to window h'})
 remap({'n', 'v'}, '<leader>wl', '<C-w>l', {desc='Go to window l'})
 remap({'n', 'v'}, '<leader>wp', '<C-w>p', {desc='Go to previous window'})
-remap({'n', 'v'}, '<leader>wt', '<C-w>t', {desc='Move current window to new Tab'})
-remap({'n', 'v'}, '<leader>w]', '<C-w>v<C-w><C-]>', {desc='open file in new window'})
+remap({'n', 'v'}, '<leader>w]', '<C-w>v<C-]>', {desc='open file in new window'})
+remap({'n', 'v'}, '<leader>wf', '<C-w>_', {desc='Max window height'})
 -- nmap('D', vim.lsp.buf.hover, 'Hover Documentation')  HOVER THE Documentation - copy from lsp.lua, for reference

@@ -7,10 +7,11 @@ return {
 	{ 'jose-elias-alvarez/null-ls.nvim' },
 
 	-- surround word/selection in brackets, quotes etc.
-	-- csXY - change surrounding from x to y
-	-- dsX - delete surrounding X
-	-- ysiw - use surround in word (very bad map tbh)
-	-- Sx - surround with x in visual mode
+	-- Added better custom mappings
+	-- S mnemonic to surround
+	-- Si) to sourround with () in something
+	-- Sd) to delete surrounding ()
+	-- Sc)] to change surrounding () to []
 	{ 'tpope/vim-surround', init = require( 'setup.surround' ) },
 
 	-- autopair brackets and quotes
@@ -27,7 +28,7 @@ return {
 
 	-- Add indentation guides even on blank lines
 	{  require 'setup.blanklines' },
-    
+
 	--use tab to escape from brackets
 	{
 		'boltlessengineer/smart-tab.nvim',
@@ -49,13 +50,10 @@ return {
 		opts = { lsp = { auto_attach = true } }
 	},
 
-	-- Some of the behaviors added by vinegar.vim would make excellent upstream additions. Many, the author would probably reject. Others are a bit too wild to even consider.
-	-- Press - in any buffer to hop up to the directory listing and seek to the file you just came from. Keep bouncing to go up, up, up. 
-	-- All that annoying crap at the top is turned off. Press I to toggle until you adapt.
-	-- The oddly C-biased default sort order is replaced with a sensible application of 'suffixes'.
-	-- If you put let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' in your vimrc, vinegar will initialize with dot files hidden. Press gh to toggle dot file hiding.
-	-- Press . on a file to pre-populate it at the end of a : command line. This is great, for example, to quickly initiate a :grep of the file or directory under the cursor. Type .!chmod +x and get :!chmod +x path/to/file.
-	-- Press y. to yank an absolute path for the file under the cursor.
-	-- Press ~ to go home.
+	--Better file explorer, I to see help
 	{ 'tpope/vim-vinegar' },
+
+	-- leap to 2char sequence with s, or gs backwards.
+	-- Two custom mappings nothing more, quite enough
+	{ 'ggandor/leap.nvim', init = require('setup.leap') },
 }
