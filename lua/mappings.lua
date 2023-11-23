@@ -43,3 +43,31 @@ remap({'n', 'v'}, '<leader>wp', '<C-w>p', {desc='Go to previous window'})
 remap({'n', 'v'}, '<leader>w]', '<C-w>v<C-]>', {desc='open file in new window'})
 remap({'n', 'v'}, '<leader>wf', '<C-w>_', {desc='Max window height'})
 -- nmap('D', vim.lsp.buf.hover, 'Hover Documentation')  HOVER THE Documentation - copy from lsp.lua, for reference
+
+-- The coolest (WORD) movement - jump to every interesting text
+-- Includes - the dumbest regex you have ever seen
+--
+-- ['"({[< ]@<=(\w)
+-- match any word (equivalent to [A-Za-z0-9]) character if 
+-- there is '"({[< or space before it (probably \s would be better as it 
+-- would also match words preceded by tabs, not spaces)
+--
+-- ^(\w)
+-- match any word character if it is on the beggining of line
+--
+-- ([]'"\>)}]\.)@<=(\w)
+-- match any word character if it is preceded by a dot
+-- which itself is precedeed by '"\>)}]
+--
+-- (['"])@<=([][(){}.,;])(['"])]]
+-- this one will match any of ][(){}.,; if they are sorrunded by " or '
+-- will match ';', ";' and ';" which is funny, but not that big of a deal
+-- Add any delimiters i have not included inside the [][(){}.,;]
+
+local pattern = [[\v['"({[< ]@<=(\w)|^(\w)|(['"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
+vim.keymap.set({'n', 'v'}, '<A-w>', function()
+  vim.fn.search(pattern)
+end)
+vim.keymap.set({'n', 'v'}, '<A-q>', function()
+  vim.fn.search(pattern, 'b')
+end)
