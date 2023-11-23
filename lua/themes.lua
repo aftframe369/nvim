@@ -10,4 +10,5 @@ return {
     {
         'haystackandroid/rusticated',
     };
+    { "savq/melange-nvim" },
 }
