@@ -98,24 +98,6 @@ cmp.setup {
         vim.api.nvim_feedkeys('<Tab>', 'i')
       end
     )
-    -- ['<Tab>'] = cmp.mapping(function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif luasnip.expand_or_locally_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's' }),
-    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip.locally_jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -144,9 +126,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.autopep8,
-    null_ls.builtins.formatting.clang_format,
-    null_ls.builtins.formatting.google_java_format,
-
+    null_ls.builtins.formatting.clang_format.with({ extra_args = { "-style=", '"{IndentWidth: 4}"' } }),
     null_ls.builtins.diagnostics.sqlfluff,
     null_ls.builtins.formatting.sqlfmt,
     -- null_ls.builtins.diagnostics.sqlfluff,

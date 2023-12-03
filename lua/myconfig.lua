@@ -6,6 +6,10 @@ vim.wo.nu = true
 vim.cmd('set whichwrap+=<,>,h,l,[,]')
 vim.opt.incsearch = true
 vim.opt.scrolloff = 10
+vim.o.linebreak = true
+
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

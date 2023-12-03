@@ -3,6 +3,14 @@ print(on_attach)
 local config = {
 	cmd = { '/home/maciej/.config/nvim/packages/jdtls/bin/jdtls' },
 	root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+	settings = {
+		java = {
+			format = {
+				enabled = true,
+				insertSpaces = true,
+			},
+		}
+	},
 	on_attach = on_attach,
 }
 require('jdtls').start_or_attach(config)

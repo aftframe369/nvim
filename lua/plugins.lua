@@ -12,7 +12,7 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround', init = require( 'setup.surround' ) },
+	{ 'tpope/vim-surround',             init = require('setup.surround') },
 
 	-- autopair brackets and quotes
 	{ 'jiangmiao/auto-pairs', },
@@ -27,7 +27,7 @@ return {
 	{ 'folke/which-key.nvim',           opts = {} },
 
 	-- Add indentation guides even on blank lines
-	{  require 'setup.blanklines' },
+	{ require 'setup.blanklines' },
 
 	--use tab to escape from brackets
 	{
@@ -55,5 +55,8 @@ return {
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
-	{ 'ggandor/leap.nvim', init = require('setup.leap') },
+	{ 'ggandor/leap.nvim',      init = require('setup.leap') },
+
+	{ require('setup.obsydian') }
+
 }
