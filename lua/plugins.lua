@@ -57,6 +57,9 @@ return {
 	-- Two custom mappings nothing more, quite enough
 	{ 'ggandor/leap.nvim',      init = require('setup.leap') },
 
-	{ require('setup.obsydian') }
+	{ require('setup.obsydian') },
+
+	-- table mode, :tableMode or <leader>tm to enter table.
+	{ 'dhruvasagar/vim-table-mode', init= require('setup.vim_table_mode')}
 
 }

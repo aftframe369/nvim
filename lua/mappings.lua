@@ -72,3 +72,7 @@ end)
 vim.keymap.set({'n', 'v'}, '<A-q>', function()
   vim.fn.search(pattern, 'b')
 end)
+
+vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
+
+vim.api.nvim_create_user_command("Obsydian", ':Explore ~/Dokumenty/m4glinski/Obsidian/kisling/', {desc='open obsidian notes directory'})

@@ -27,10 +27,10 @@
   "nvim-lspconfig": { "branch": "master", "commit": "cab7233cd6a89ec952dfd40c4b74341b1165830e" },
   "nvim-navbuddy": { "branch": "master", "commit": "f137a3466a6cd1965cdcc5398daff54e66eebbe5" },
   "nvim-navic": { "branch": "master", "commit": "0ffa7ffe6588f3417e680439872f5049e38a24db" },
-  "nvim-treesitter": { "branch": "master", "commit": "49f7194e4c4d3c9ed891b0968798c062e8ac5a3d" },
+  "nvim-treesitter": { "branch": "master", "commit": "783e5fc3079680b307e8ac518935317907e71a59" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "76c7a89b41de77a4f83fb77fa072c5ad7605fe3b" },
   "obsidian.nvim": { "branch": "main", "commit": "ce58193226fa72302ad0732aa61d6a4bec3f0789" },
-  "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
+  "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "rose-pine": { "branch": "main", "commit": "e29002cbee4854a9c8c4b148d8a52fae3176070f" },
   "rusticated": { "branch": "master", "commit": "8052162f2c602725b4c0faf1d003404d5b9140c2" },
   "smart-tab.nvim": { "branch": "main", "commit": "f4d34edd9be353e25507001a7d632b3146e57277" },
@@ -40,6 +40,7 @@
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
+  "vim-table-mode": { "branch": "master", "commit": "4ff8de2ac93431ee6d85a9e04177012752e6abdc" },
   "vim-vinegar": { "branch": "master", "commit": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" }
 }

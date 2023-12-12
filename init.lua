@@ -20,4 +20,3 @@ require 'setup.telescope'
 require 'setup.treesitter'
 require 'setup.lsp'
 
-vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
