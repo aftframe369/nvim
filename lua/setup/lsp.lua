@@ -15,8 +15,6 @@ vim.diagnostic.config(
     }
 }
 )
-
-
 -- LSP settings.
 local on_attach = require('setup.lsp_onattach')
 -- Setup neovim lua configuration
@@ -59,51 +57,8 @@ mason_lspconfig.setup_handlers {
     }
   end,
 };
--- [[ Configure nvim-cmp ]]
--- See `:help cmp`
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
 
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  completion = {
-    completeopt = 'menu,menuone,noinsert'
-  },
-  mapping = cmp.mapping.preset.insert {
-    ['J'] = cmp.mapping.select_next_item(),
-    ['K'] = cmp.mapping.select_prev_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.insert,
-      select = false,
-    },
-    ['L'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.insert,
-      select = false,
-    },
-    ['Tab'] = cmp.mapping(
-      -- Because youre using smart-tab 
-      -- you can now smart tab out of strings
-      -- even if they are being completed
-      function()
-        cmp.abort()
-        vim.api.nvim_feedkeys('<Tab>', 'i')
-      end
-    )
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
+require('setup.nvimcmp')
 
 require 'lspconfig'.pyright.setup {
   on_attach = on_attach,
