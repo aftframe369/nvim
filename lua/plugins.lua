@@ -27,8 +27,14 @@ return {
 	-- Sc)] to change surrounding () to []
 	{ 'tpope/vim-surround',           init = require('setup.surround') },
 
-	-- autopair brackets and quotes
-	{ 'jiangmiao/auto-pairs', },
+	-- -- autopair brackets and quotes
+	-- { 'jiangmiao/auto-pairs', },
+	--
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		opts = { require 'setup.autopairs' }
+	},
 
 	-- color picker r -> HSL/rgb switch
 	{ 'ziontee113/color-picker.nvim', opts = {} },
