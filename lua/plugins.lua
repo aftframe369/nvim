@@ -4,7 +4,20 @@ return {
 	{ 'mfussenegger/nvim-dap', },
 	{ 'mfussenegger/nvim-dap-python', },
 	{ 'mfussenegger/nvim-lint', },
-	{ 'jose-elias-alvarez/null-ls.nvim' },
+	{ 'nvimtools/none-ls.nvim' },
+
+	-- Autocompletion
+	{
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			'hrsh7th/cmp-nvim-lsp',
+			'SirVer/ultisnips',
+			'honza/vim-snippets',
+			'quangnguyen30192/cmp-nvim-ultisnips',
+			-- 'L3MON4D3/LuaSnip',
+			-- 'saadparwaiz1/cmp_luasnip'
+		},
+	},
 
 	-- surround word/selection in brackets, quotes etc.
 	-- Added better custom mappings
@@ -12,19 +25,19 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround',             init = require('setup.surround') },
+	{ 'tpope/vim-surround',           init = require('setup.surround') },
 
 	-- autopair brackets and quotes
 	{ 'jiangmiao/auto-pairs', },
 
 	-- color picker r -> HSL/rgb switch
-	{ 'ziontee113/color-picker.nvim',   opts = {} },
+	{ 'ziontee113/color-picker.nvim', opts = {} },
 
 	-- java server
 	{ 'mfussenegger/nvim-jdtls' },
 
 	-- Useful plugin to show you pending keybinds.
-	{ 'folke/which-key.nvim',           opts = {} },
+	{ 'folke/which-key.nvim',         opts = {} },
 
 	-- Add indentation guides even on blank lines
 	{ require 'setup.blanklines' },
@@ -55,11 +68,11 @@ return {
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
-	{ 'ggandor/leap.nvim',      init = require('setup.leap') },
+	{ 'ggandor/leap.nvim',          init = require('setup.leap') },
 
 	{ require('setup.obsydian') },
 
 	-- table mode, :tableMode or <leader>tm to enter table.
-	{ 'dhruvasagar/vim-table-mode', init= require('setup.vim_table_mode')}
+	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') }
 
 }

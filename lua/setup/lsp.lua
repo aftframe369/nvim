@@ -1,19 +1,22 @@
 --Global lsp shortcuts and config
 local remap = vim.keymap.set
-local modes = {'n', 'v', 'x'}
+local modes = { 'n', 'v', 'x' }
 remap(modes, '<leader>lh', function()
-    if (vim.diagnostic.is_disabled()) then vim.diagnostic.enable() else vim.diagnostic.disable()
+    if (vim.diagnostic.is_disabled()) then
+      vim.diagnostic.enable()
+    else
+      vim.diagnostic.disable()
     end
   end,
-  {desc='[L]SP [H]ide'})
-remap(modes, '<leader>lm', vim.diagnostic.open_float, {desc='[L]SP float [M]essages'})
+  { desc = '[L]SP [H]ide' })
+remap(modes, '<leader>lm', vim.diagnostic.open_float, { desc = '[L]SP float [M]essages' })
 vim.diagnostic.config(
-{
-    virtual_text=false,
+  {
+    virtual_text = false,
     float = {
-      source=true,
+      source = true,
     }
-}
+  }
 )
 -- LSP settings.
 local on_attach = require('setup.lsp_onattach')
@@ -70,23 +73,41 @@ require 'lspconfig'.pyright.setup {
         diagnosticMode = 'openFilesOnly',
         useLibraryCodeForTypes = true,
         typeCheckingMode = 'off'
+      }
+    }
+  }
+};
 
-
-      } } } };
+require 'lspconfig'.emmet_ls.setup({
+  -- on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
+  }
+})
 
 local null_ls = require("null-ls")
 
 null_ls.setup({
+  on_attach = on_attach,
   sources = {
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.autopep8,
-    null_ls.builtins.formatting.clang_format.with({ extra_args = { "-style=", '"{IndentWidth: 4}"' } }),
-    null_ls.builtins.diagnostics.sqlfluff,
-    null_ls.builtins.formatting.sqlfmt,
-    -- null_ls.builtins.diagnostics.sqlfluff,
+    null_ls.builtins.formatting.prettier.with({
+      filetypes = { "html", "json", "yaml", "markdown" },
+    }),
+    null_ls.builtins.formatting.clang_format.with({
+      extra_args = { "-style=", "{IndentWidth: 4}" }
+    }),
+    null_ls.builtins.formatting.sql_formatter.with({
+      extra_args = { "-c", vim.fn.expand("~/.config/nvim/packages/sql_config.json") }
+    }),
   },
 })
-
-
-

@@ -18,11 +18,7 @@ remap("v", "J", ":m '>+1<CR>gv=gv")
 remap("v", "K", ":m '<-2<CR>gv=gv")
 remap('n', 'L', 'J', { noremap = true })
 
-remap(all, 'bb', '%') --bb jumps to matching brackets
--- remap({'o', 'n', 'v'}, 'bc', ']*') --bc and Bc jumps to next or previous comments
--- remap({'o', 'n', 'v'}, 'Bc', '[*')
-remap(all, 'bm', ']m') --bm and Bm jumps to next or previous method
-remap(all, 'Bm', '[m')
+remap(all, 'b', '%') --bb jumps to matching brackets
 
 remap('n', '<leader>e', ':Explore<CR>')
 
@@ -66,7 +62,7 @@ remap({ 'n', 'v' }, '<leader>wf', '<C-w>_', { desc = 'Max window height' })
 -- will match ';', ";' and ';" which is funny, but not that big of a deal
 -- Add any delimiters i have not included inside the [][(){}.,;]
 
-local pattern = [[\v['"({[< ]@<=(\w)|^(\w)|(['"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
+local pattern = [[\v['"({[<> ]@<=(\w)|^(\w)|(['"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
 vim.keymap.set({'n', 'v'}, '<A-w>', function()
   vim.fn.search(pattern)
 end)
@@ -77,3 +73,15 @@ end)
 vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
 
 vim.api.nvim_create_user_command("Obsydian", ':Explore ~/Dokumenty/m4glinski/Obsidian/kisling/', {desc='open obsidian notes directory'})
+
+vim.api.nvim_create_user_command("Dark", function ()
+  vim.o.background = 'dark'
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+end, {desc='darkmode'})
+
+vim.api.nvim_create_user_command("Light", function ()
+  vim.o.background = 'light'
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+end, {desc='lightmode'})

@@ -1,19 +1,22 @@
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
+
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
+-- local luasnip = require 'luasnip'
+-- require('luasnip.loaders.from_vscode').lazy_load()
+-- luasnip.config.setup {}
 
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- luasnip.lsp_expand(args.body)
     end,
   },
-  completion = {
-    completeopt = 'menu,menuone,noinsert'
-  },
+  -- completion = {
+  --   completeopt = 'menu,menuone,noinsert'
+  -- },
+
   mapping = cmp.mapping.preset.insert {
     ['J'] = cmp.mapping.select_next_item(),
     ['K'] = cmp.mapping.select_prev_item(),
@@ -31,6 +34,7 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'ultisnips' },
+    -- { name = 'luasnip' },
   },
 }
