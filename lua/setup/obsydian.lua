@@ -13,6 +13,11 @@ return {
         path = "~/Dokumenty/m4glinski/Obsidian/kisling/",
       },
     },
+
+    daily_notes = {
+      folder = "logi",
+    },
+
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ["gf"] = {

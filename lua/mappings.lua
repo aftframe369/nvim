@@ -85,3 +85,4 @@ vim.api.nvim_create_user_command("Light", function ()
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
   vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
 end, {desc='lightmode'})
+
