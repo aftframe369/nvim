@@ -10,7 +10,7 @@ return {
     workspaces = {
       {
         name = "kisling",
-        path = "~/Dokumenty/m4glinski/Obsidian/kisling/",
+        path = "~/Dokumenty/Kisling/",
       },
     },
     mappings = {
