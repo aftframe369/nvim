@@ -72,7 +72,7 @@ end)
 
 vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
 
-vim.api.nvim_create_user_command("Obsydian", ':Explore ~/Dokumenty/m4glinski/Obsidian/kisling/', {desc='open obsidian notes directory'})
+vim.api.nvim_create_user_command("Obsydian", ':Explore  ~/Dokumenty/kisling/',  {desc='open obsidian notes directory'})
 
 vim.api.nvim_create_user_command("Dark", function ()
   vim.o.background = 'dark'
