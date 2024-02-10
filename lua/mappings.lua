@@ -3,6 +3,7 @@ local all = { 'o', 'n', 'v', 'x' }
 
 -- vim.keymap.set('i', '<C-x>', '<C-x><C-f>')
 remap(all, 'q', 'b')               -- q przesuwa do początku słowa na lewo. Bardziej intuicyjne, bo na lewo od 'w'
+remap(all, 'D', 'dd')               -- q przesuwa do początku słowa na lewo. Bardziej intuicyjne, bo na lewo od 'w'
 remap(all, 'Q', 'B')               -- Q przesuwa do początku SŁOWA na lewo. Bardziej intuicyjne, bo na lewo od 'w'
 remap('i', '<C-BS>', '<C-W>')                     --Ctrl backspace usuwa całe słowo w insert mode
 remap('i', '<C-del>', '<Esc>ce')                --Ctrl delete usuwa słowo w insert mode

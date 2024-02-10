@@ -54,7 +54,7 @@ return {
 		opts = {
 			-- default options:
 			-- list of tree-sitter node types to filter
-			skips = { "string_content" },
+			-- skips = { "string_content" },
 			mapping = "<tab>",
 		}
 	},
@@ -79,6 +79,14 @@ return {
 	{ require('setup.obsydian') },
 
 	-- table mode, :tableMode or <leader>tm to enter table.
-	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') }
+	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') },
+
+	-- install without yarn or npm
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function() vim.fn["mkdp#util#install"]() end,
+	}
 
 }
