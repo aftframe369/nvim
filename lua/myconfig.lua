@@ -5,7 +5,7 @@ vim.wo.relativenumber = true
 vim.wo.nu = true
 vim.cmd('set whichwrap+=<,>,h,l,[,]')
 vim.opt.incsearch = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 20
 vim.o.linebreak = true
 
 vim.o.tabstop = 4
@@ -14,12 +14,10 @@ vim.o.shiftwidth = 4
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
---kickstarts config
--- [[ Setting options ]]
--- See `:help vim.o`
+vim.g.netrw_list_hide = "^\\."
 
 -- Set highlight on search
-vim.o.hlsearch = false 
+vim.o.hlsearch = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -30,6 +28,7 @@ vim.o.mousescroll = 'ver:3'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
+--kickstarts config
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -63,6 +62,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.g.kp = ':help'
 
 
 -- [[ Highlight on yank ]]

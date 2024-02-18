@@ -25,7 +25,7 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround',           init = require('setup.surround') },
+	{ 'tpope/vim-surround', init = require('setup.surround') },
 
 	-- -- autopair brackets and quotes
 	-- { 'jiangmiao/auto-pairs', },
@@ -70,7 +70,7 @@ return {
 	},
 
 	--Better file explorer, I to see help
-	{ 'tpope/vim-vinegar' },
+	{ 'tpope/vim-vinegar'},
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
@@ -87,6 +87,12 @@ return {
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
 		build = function() vim.fn["mkdp#util#install"]() end,
+		init = function()
+			vim.g.mkdp_preview_options = {
+				mkit = {
+					breaks = true
+				}
+			}
+		end,
 	}
-
 }

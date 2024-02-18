@@ -10,7 +10,7 @@ return {
     workspaces = {
       {
         name = "kisling",
-        path = "~/Dokumenty/Kisling/",
+        path = "~/Dokumenty/kisling/",
       },
     },
 
