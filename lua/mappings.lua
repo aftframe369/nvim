@@ -18,6 +18,7 @@ remap('n', 'J', ':m .+1<CR>==')
 remap("v", "J", ":m '>+1<CR>gv=gv")
 remap("v", "K", ":m '<-2<CR>gv=gv")
 remap('n', 'L', 'J', { noremap = true })
+remap('n', 'H', 'K', { noremap = true })
 
 remap(all, 'b', '%') --bb jumps to matching brackets
 
@@ -72,6 +73,7 @@ vim.keymap.set({'n', 'v'}, '<A-q>', function()
 end)
 
 vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
+vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.api.nvim_create_user_command("Obsydian", ':Explore  ~/Dokumenty/kisling/',  {desc='open obsidian notes directory'})
 
