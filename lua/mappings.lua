@@ -18,7 +18,8 @@ remap('n', 'J', ':m .+1<CR>==')
 remap("v", "J", ":m '>+1<CR>gv=gv")
 remap("v", "K", ":m '<-2<CR>gv=gv")
 remap('n', 'L', 'J', { noremap = true })
-remap('n', 'H', 'K', { noremap = true })
+remap({'n', 'v'}, 'H', 'K', { noremap = true })
+
 
 remap(all, 'b', '%') --bb jumps to matching brackets
 
@@ -26,7 +27,7 @@ remap('n', '<leader>e', ':Explore<CR>')
 
 remap('n', '<Tab>', '}') --Use tab to jump to next paragraph
 
-remap('v', '<C-c>', '"+y"')
+remap({'v', 'n'}, '<C-c>', '"+y"')
 remap('n', '<leader><leader>', '<c-^>zz', { silent = false, noremap = true, desc = 'Previous buffer' })
 
 
@@ -72,8 +73,12 @@ vim.keymap.set({'n', 'v'}, '<A-q>', function()
   vim.fn.search(pattern, 'b')
 end)
 
+-- save and source current file
 vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
 vim.keymap.set('i', '<C-j>', '<Esc>')
+
+vim.keymap.set('i', '<C-j>', '<Esc>')
+
 
 vim.api.nvim_create_user_command("Obsydian", ':Explore  ~/Dokumenty/kisling/',  {desc='open obsidian notes directory'})
 
