@@ -7,6 +7,7 @@ vim.cmd('set whichwrap+=<,>,h,l,[,]')
 vim.opt.incsearch = true
 vim.opt.scrolloff = 20
 vim.o.linebreak = true
+vim.o.kp = ":help"
 
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -60,8 +61,8 @@ vim.o.termguicolors = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({'n', 'v'}, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.g.kp = ':help'
 
