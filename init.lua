@@ -21,3 +21,4 @@ require 'setup.telescope'
 require 'setup.treesitter'
 require 'setup.lsp'
 
+vim.o.conceallevel=1

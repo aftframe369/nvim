@@ -38,5 +38,33 @@ return {
       return title
     end,
 
-  },
+
+
+    ui = {
+      enable = true,         -- set to false to disable all additional syntax features
+      update_debounce = 200, -- update delay after a text change (in milliseconds)
+      checkboxes = {
+        [" "] = { hl_group = "ObsidianTodo" },
+        ["x"] = { hl_group = "ObsidianDone" },
+        [">"] = { hl_group = "ObsidianRightArrow" },
+        ["~"] = { hl_group = "ObsidianTilde" },
+
+      },
+      reference_text = { hl_group = "ObsidianRefText" },
+      highlight_text = { hl_group = "ObsidianHighlightText" },
+      tags = { hl_group = "ObsidianTag" },
+      hl_groups = {
+        -- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
+        ObsidianTodo = { bold = true, fg = "#f78c6c" },
+        ObsidianDone = { bold = true, fg = "#89ddff" },
+        ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
+        ObsidianTilde = { bold = true, fg = "#ff5370" },
+        ObsidianBullet = { bold = true, fg = "#89ddff" },
+        ObsidianRefText = { underline = true, fg = "#c792ea" },
+        ObsidianExtLinkIcon = { fg = "#c792ea" },
+        ObsidianTag = { italic = true, fg = "#89ddff" },
+        ObsidianHighlightText = { bg = "#75662e" },
+      },
+    },
+  }
 }
