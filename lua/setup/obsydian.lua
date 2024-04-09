@@ -38,8 +38,6 @@ return {
       return title
     end,
 
-
-
     ui = {
       enable = true,         -- set to false to disable all additional syntax features
       update_debounce = 200, -- update delay after a text change (in milliseconds)
@@ -66,5 +64,10 @@ return {
         ObsidianHighlightText = { bg = "#75662e" },
       },
     },
-  }
+
+  },
+  init = function()
+    vim.api.nvim_create_user_command("Obsydian", ':e  ~/Dokumenty/kisling/',  {desc='open obsidian notes directory'})
+    vim.api.nvim_create_user_command("ObsydianUlubiona", ":!ln -s \"%:p\" \"/home/maciej/Dokumenty/kisling/00 ulubione/%:t\"", {})
+  end
 }

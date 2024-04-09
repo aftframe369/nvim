@@ -25,7 +25,7 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround', init = require('setup.surround') },
+	{ 'tpope/vim-surround',           init = require('setup.surround') },
 
 	-- -- autopair brackets and quotes
 	-- { 'jiangmiao/auto-pairs', },
@@ -69,8 +69,19 @@ return {
 		opts = { lsp = { auto_attach = true } }
 	},
 
-	--Better file explorer, I to see help
-	{ 'tpope/vim-vinegar'},
+	-- --Better file explorer, I to see help
+	-- { 'tpope/vim-vinegar'},
+
+	{
+		'stevearc/oil.nvim',
+		opts = {
+			skip_confirm_for_simple_edits = false,
+			signcolumn = "yes",
+			columns = {
+				"icon",
+			},
+		},
+	},
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough

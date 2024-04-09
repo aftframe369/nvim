@@ -23,7 +23,8 @@ remap({'n', 'v'}, 'H', 'K', { noremap = true })
 
 remap(all, 'b', '%') --bb jumps to matching brackets
 
-remap('n', '<leader>e', ':Explore<CR>')
+-- remap('n', '<leader>e', ':Explore<CR>')
+remap('n', '<leader>e', ':Oil<CR>')
 
 remap('n', '<Tab>', '}') --Use tab to jump to next paragraph
 
@@ -80,7 +81,6 @@ vim.keymap.set('i', '<C-j>', '<Esc>')
 vim.keymap.set('i', '<C-j>', '<Esc>')
 
 
-vim.api.nvim_create_user_command("Obsydian", ':Explore  ~/Dokumenty/kisling/',  {desc='open obsidian notes directory'})
 
 vim.api.nvim_create_user_command("Dark", function ()
   vim.o.background = 'dark'
