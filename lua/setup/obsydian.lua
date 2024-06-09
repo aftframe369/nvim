@@ -13,9 +13,10 @@ return {
         path = "~/Dokumenty/kisling/",
       },
     },
+    disable_frontmatter = true,
 
     daily_notes = {
-      folder = "logi",
+      folder = "Logi",
     },
 
     mappings = {
@@ -39,8 +40,13 @@ return {
     end,
 
   },
+
   init = function()
-    vim.api.nvim_create_user_command("Obsydian", ':e  ~/Dokumenty/kisling/',  {desc='open obsidian notes directory'})
-    vim.api.nvim_create_user_command("ObsydianUlubiona", ":!ln -s \"%:p\" \"/home/maciej/Dokumenty/kisling/00 ulubione/%:t\"", {})
+    vim.api.nvim_create_user_command("Obsydian", ':e  ~/Dokumenty/kisling/', { desc = 'open obsidian notes directory' })
+    vim.api.nvim_create_user_command("ObsydianUlubiona",
+      ":!ln -s \"%:p\" \"/home/maciej/Dokumenty/kisling/00 ulubione/%:t\"", {})
+    vim.api.nvim_create_user_command("ObsydianToday",
+      ':cd ~/Dokumenty/kisling| e TODO.md | ObsidianToday',
+      { desc = "Todays note" })
   end
 }

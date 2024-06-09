@@ -17,7 +17,7 @@ remap('n', 'K', ':m .-2<CR>==')                  --use J and K to move lines up 
 remap('n', 'J', ':m .+1<CR>==')
 remap("v", "J", ":m '>+1<CR>gv=gv")
 remap("v", "K", ":m '<-2<CR>gv=gv")
-remap('n', 'L', 'J', { noremap = true })
+remap({'n' , 'v'}, 'L', 'J', { noremap = true })
 remap({'n', 'v'}, 'H', 'K', { noremap = true })
 
 remap(all, 'b', '%') --bb jumps to matching brackets
