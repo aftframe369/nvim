@@ -15,8 +15,10 @@ return {
     },
 
     daily_notes = {
-      folder = "logi",
+      folder = "Logi",
+      alias_format = "%d %m %Y",
     },
+    disable_frontmatter = true,
 
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -64,6 +66,14 @@ return {
         ObsidianHighlightText = { bg = "#75662e" },
       },
     },
+
+    templates = {
+      substitutions = {
+        date = function()
+          return os.date("%d %M %Y", os.time())
+	end
+      },
+	},
 
   },
   init = function()

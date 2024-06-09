@@ -73,14 +73,7 @@ return {
 	-- { 'tpope/vim-vinegar'},
 
 	{
-		'stevearc/oil.nvim',
-		opts = {
-			skip_confirm_for_simple_edits = false,
-			signcolumn = "yes",
-			columns = {
-				"icon",
-			},
-		},
+		require("setup.oil")
 	},
 
 	-- leap to 2char sequence with s, or gs backwards.
