@@ -5,6 +5,8 @@ return {
 	{ 'mfussenegger/nvim-dap-python', },
 	{ 'mfussenegger/nvim-lint', },
 	{ 'nvimtools/none-ls.nvim' },
+	{ 'dccsillag/magma-nvim'},
+
 
 	-- Autocompletion
 	{
