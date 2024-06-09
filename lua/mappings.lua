@@ -20,6 +20,7 @@ remap("v", "K", ":m '<-2<CR>gv=gv")
 remap({'n' , 'v'}, 'L', 'J', { noremap = true })
 remap({'n', 'v'}, 'H', 'K', { noremap = true })
 
+
 remap(all, 'b', '%') --bb jumps to matching brackets
 
 -- remap('n', '<leader>e', ':Explore<CR>')
@@ -75,6 +76,7 @@ end)
 
 -- save and source current file
 vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
+vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.keymap.set('i', '<C-j>', '<Esc>')
 
