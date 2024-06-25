@@ -13,12 +13,12 @@ return {
         path = "~/Dokumenty/kisling/",
       },
     },
-    disable_frontmatter = true,
 
     daily_notes = {
       folder = "Logi",
       alias_format = "%d %m %Y",
     },
+
     disable_frontmatter = true,
 
     mappings = {

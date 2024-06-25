@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
+-- vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
 
 require 'lazypath'
 require('lazy').setup({

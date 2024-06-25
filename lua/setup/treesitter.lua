@@ -4,7 +4,6 @@ require('nvim-treesitter.configs').setup {
 
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'java', 'rust', 'markdown', 'tsx', 'typescript', 'html', 'vimdoc', 'vim' },
 
-
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
   sync_install = false,
@@ -64,5 +63,6 @@ require('nvim-treesitter.configs').setup {
         ['<leader>a'] = '@parameter.inner',
       },
     },
+    
   },
 }

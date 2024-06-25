@@ -80,8 +80,6 @@ vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.keymap.set('i', '<C-j>', '<Esc>')
 
-
-
 vim.api.nvim_create_user_command("Dark", function ()
   vim.o.background = 'dark'
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -93,4 +91,12 @@ vim.api.nvim_create_user_command("Light", function ()
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
   vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
 end, {desc='lightmode'})
+
+remap(all, 'gx', function ()
+  vim.fn.execute(":!xdg-open "..vim.fn.expand("<cfile>"))
+  
+end)
+
+remap(all, '<leader>gp', ":!/home/maciej/.pushnotes.sh<CR>")
+remap(all, '<leader>gd', ":!git -C /home/maciej/Dokumenty/kisling/ pull <CR>")
 
