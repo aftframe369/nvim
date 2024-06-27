@@ -6,7 +6,7 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F5>', '<Esc>:w|'..
 	"--pdf-engine=lualatex " ..
 	"-V 'monofont: DejaVuSans Mono.ttf' " ..
 	"-V lang=pl " ..
-	"--highlight-style tango" ..
+	"--highlight-style pygments" ..
 	"<CR>"
 
 )

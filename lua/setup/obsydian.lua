@@ -14,6 +14,18 @@ return {
       },
     },
 
+    attachments = {
+      img_folder = "Załączniki", -- This is the default
+
+      ---@param client obsidian.Client
+      ---@param path obsidian.Path the absolute path to the image file
+      ---@return string
+      img_text_func = function(client, path)
+        path = client:vault_relative_path(path) or path
+        return string.format("![%s](%s)", path.name, path)
+      end,
+    },
+
     daily_notes = {
       folder = "Logi",
       alias_format = "%d %m %Y",
@@ -72,9 +84,9 @@ return {
       substitutions = {
         date = function()
           return os.date("%d %M %Y", os.time())
-	end
+        end
       },
-	},
+    },
 
   },
 
