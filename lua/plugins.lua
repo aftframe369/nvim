@@ -5,7 +5,16 @@ return {
 	{ 'mfussenegger/nvim-dap-python', },
 	{ 'mfussenegger/nvim-lint', },
 	{ 'nvimtools/none-ls.nvim' },
-	{ 'dccsillag/magma-nvim'},
+	{
+		"zeioth/none-ls-autoload.nvim",
+		event = "BufEnter",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"zeioth/none-ls-external-sources.nvim",
+			"nvimtools/none-ls.nvim"
+		},
+	},
+	{ 'dccsillag/magma-nvim' },
 
 
 	-- Autocompletion
@@ -27,7 +36,7 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround',           init = require('setup.surround') },
+	{ 'tpope/vim-surround',  init = require('setup.surround') },
 
 	-- -- autopair brackets and quotes
 	-- { 'jiangmiao/auto-pairs', },
@@ -61,22 +70,21 @@ return {
 		}
 	},
 
-	-- Navbuddy, use :Navbuddy to quickly jump to objects and functions in buffer
-	{
-		"SmiteshP/nvim-navbuddy",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim"
-		},
-		opts = { lsp = { auto_attach = true } }
-	},
+	-- -- Navbuddy, use :Navbuddy to quickly jump to objects and functions in buffer
+	-- Disabled because of breaking changes and not used anyway
+	-- {
+	-- 	"SmiteshP/nvim-navbuddy",
+	-- 	dependencies = {
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"MunifTanjim/nui.nvim"
+	-- 	},
+	-- 	opts = { lsp = { auto_attach = true } }
+	-- },
 
 	-- --Better file explorer, I to see help
 	-- { 'tpope/vim-vinegar'},
 
-	{
-		require("setup.oil")
-	},
+	{ require("setup.oil") },
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
@@ -100,5 +108,6 @@ return {
 				}
 			}
 		end,
-	}
+	},
+
 }

@@ -94,9 +94,9 @@ end, {desc='lightmode'})
 
 remap(all, 'gx', function ()
   vim.fn.execute(":!xdg-open "..vim.fn.expand("<cfile>"))
-  
 end)
 
 remap(all, '<leader>gp', ":!/home/maciej/.pushnotes.sh<CR>")
 remap(all, '<leader>gd', ":!git -C /home/maciej/Dokumenty/kisling/ pull <CR>")
 
+remap("n", "<leader>sv", ":source $MYVIMRC<CR>")

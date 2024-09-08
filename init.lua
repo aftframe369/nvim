@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
--- vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
+--vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
 
 require 'lazypath'
 require('lazy').setup({
@@ -22,10 +22,8 @@ vim.api.nvim_set_hl(0, "Visual", { bg = "white" })
 vim.api.nvim_set_hl(0, "CursorLine", { underline=true, sp='white'})
 vim.o.cursorline = true
 
-
 vim.o.conceallevel=1
 
 require 'setup.treesitter'
 require 'setup.telescope'
 require 'setup.lsp'
-

@@ -7,7 +7,9 @@ return {
       "icon",
     },
     keymaps = {
+      ["~"] = function() vim.api.nvim_command(":edit ~/") end,
       ["ge"] = "actions.open_external",
-    }
+      ["yp"] = "actions.yank_entry",
+      }
   }
 }
