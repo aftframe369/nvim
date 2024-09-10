@@ -3,6 +3,7 @@ return {
   lazy = true,
   version = '*',
   ft = "markdown",
+  enable = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
