@@ -1,5 +1,19 @@
--- [[ Configure nvim-cmp ]]
--- See `:help cmp`
+if vim.env.CHROMEBOOK == 1 then
+  Chromebook = true
+else
+  Chromebook = false
+end
+
+if Chromebook then
+  Sources = {
+    { name = 'nvim_lsp' },
+  }
+else
+  Sources = {
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+  }
+end
 
 local cmp = require 'cmp'
 -- local luasnip = require 'luasnip'
@@ -32,13 +46,20 @@ cmp.setup {
       select = false,
     },
   },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
-    -- { name = 'luasnip' },
-  },
-  
+  sources = Sources
 }
+
+if Chromebook then
+  vim.api.nvim_create_user_command("UltiLoad", function()
+    cmp.setup {
+      sources = {
+        { name = 'nvim_lsp' },
+        { name = 'ultisnips' },
+      }
+    }
+  end
+  )
+end
 
 cmp.event:on(
   'confirm_done',

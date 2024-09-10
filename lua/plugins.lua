@@ -73,7 +73,6 @@ return {
 		},
 	},
 
-
 	{ 'beauwilliams/statusline.lua', cond = Chromebook },
 
 	-- surround word/selection in brackets, quotes etc.
