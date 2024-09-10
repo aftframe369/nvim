@@ -1,24 +1,25 @@
 vim.g.mapleader = ' '
 
-if vim.env.CHROMEBOOK == 1 then
-	Chromebook = true
+if vim.env.CHROMEBOOK == "1" then
+	vim.g.Chromebook = true
 else
-	Chromebook = false
+	vim.g.Chromebook = false
 end
 
 function color()
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "Visual", { bg = "White" })
-	vim.api.nvim_set_hl(0, "CursorLine", { underline = true, sp = 'none' })
 	vim.o.background = 'light'
 	-- vim.o.background = 'dark'
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Visual", { bg = "MistyRose", fg="black" })
+	vim.api.nvim_set_hl(0, "CursorLine", { underline = true, sp = 'none' })
 end
-
---vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
 
 -- kolejność zostałą dobrana tak, aby maksymalizować funkcjonalość
 -- jak coś zesram w konfiguracji
+if vim.g.Chromebook then
+	vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
+end
 
 require 'myconfig'
 require 'mappings'
@@ -37,14 +38,9 @@ require('lazy').setup({
 
 vim.cmd.colorscheme 'melange'
 
--- load colors again if not crashed
-color()
-
 require 'setup.treesitter'
 require 'setup.telescope'
 require 'setup.lsp'
 
-
-
-
-
+-- load colors again if not crashed
+color()
