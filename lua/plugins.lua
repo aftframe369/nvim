@@ -1,3 +1,9 @@
+if vim.env.CHROMEBOOK == 1 then
+	Chromebook = true
+else
+	Chromebook = false
+end
+
 return {
 	-- amend keymaps
 	{
@@ -44,7 +50,7 @@ return {
 	-- See `:help lualine.txt`
 	{
 		'nvim-lualine/lualine.nvim',
-		enabled = false,
+		cond = not Chromebook,
 		opts = {
 			options = {
 				icons_enabled = true,
@@ -59,7 +65,7 @@ return {
 	},
 
 
-	{ 'beauwilliams/statusline.lua' },
+	{ 'beauwilliams/statusline.lua', cond = Chromebook },
 
 	-- surround word/selection in brackets, quotes etc.
 	-- Added better custom mappings
@@ -102,15 +108,15 @@ return {
 	},
 
 	-- Navbuddy, use :Navbuddy to quickly jump to objects and functions in buffer
-	{
-		"SmiteshP/nvim-navbuddy",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim"
-		},
-		opts = { lsp = { auto_attach = true } }
-	},
-
+	-- {
+	-- 	"SmiteshP/nvim-navbuddy",
+	-- 	dependencies = {
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"MunifTanjim/nui.nvim"
+	-- 	},
+	-- 	opts = { lsp = { auto_attach = true } }
+	-- },
+	--
 	-- --Better file explorer, I to see help
 	-- { 'tpope/vim-vinegar'},
 

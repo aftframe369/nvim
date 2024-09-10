@@ -1,9 +1,15 @@
+if vim.env.CHROMEBOOK == 1 then
+	Chromebook = true
+else
+	Chromebook = false
+end
+
 return {
   "epwalsh/obsidian.nvim",
   lazy = true,
+  cond = not Chromebook,
   version = '*',
   ft = "markdown",
-  enable = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
