@@ -37,6 +37,7 @@ cmp.setup {
     { name = 'ultisnips' },
     -- { name = 'luasnip' },
   },
+  
 }
 
 cmp.event:on(
