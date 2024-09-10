@@ -63,7 +63,7 @@ mason_lspconfig.setup_handlers {
 
 require('setup.nvimcmp')
 
-require 'lspconfig'.pyright.setup {
+require 'lspconfig'.pyright.setup({
   on_attach = on_attach,
   settings = {
     pyright = { autoImportCompletion = true, },
@@ -72,11 +72,21 @@ require 'lspconfig'.pyright.setup {
         autoSearchPaths = true,
         diagnosticMode = 'openFilesOnly',
         useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off'
+        typeCheckingMode = 'on'
       }
     }
   }
-};
+})
+
+require 'lspconfig'.ruff_lsp.setup({
+  on_attach = on_attach,
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {},
+    }
+  }
+})
 
 require 'lspconfig'.emmet_ls.setup({
   -- on_attach = on_attach,
@@ -97,9 +107,7 @@ local null_ls = require("null-ls")
 null_ls.setup({
   on_attach = on_attach,
   sources = {
-    null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.diagnostics.ruff,
-    null_ls.builtins.formatting.autopep8,
+    -- null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.formatting.prettier.with({
       filetypes = { "html", "json", "yaml", "markdown" },
     }),
@@ -110,4 +118,10 @@ null_ls.setup({
       extra_args = { "-c", vim.fn.expand("~/.config/nvim/packages/sql_config.json") }
     }),
   },
+})
+require("none-ls-autoload").setup({
+  external_sources = {
+    'none-ls-external-sources.formatting.autopep8',
+  }
+
 })

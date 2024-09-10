@@ -55,6 +55,16 @@ return {
         end,
         opts = { buffer = true },
       },
+
+      ["<leader>o?"] = {
+
+        action = function()
+          vim.api.nvim_command(":ObsidianSearch")
+        end,
+        opts = {}
+
+      }
+
     },
     note_id_func = function(title)
       return title

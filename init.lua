@@ -1,5 +1,6 @@
 vim.g.mapleader = ' '
 
+
 if vim.env.CHROMEBOOK == 1 then
 	Chromebook = true
 else

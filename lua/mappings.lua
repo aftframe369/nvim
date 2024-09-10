@@ -94,9 +94,26 @@ end, { desc = 'lightmode' })
 
 remap(all, 'gx', function ()
   vim.fn.execute(":!xdg-open "..vim.fn.expand("<cfile>"))
-  
 end)
 
-remap(all, '<leader>gp', ":!/home/maciej/.pushnotes.sh<CR>")
-remap(all, '<leader>gd', ":!git -C /home/maciej/Dokumenty/kisling/ pull <CR>")
+remap(all, '<leader>gp', ":!/home/maciej/.pushnotes.sh push<CR>", { desc = "pushnotes"})
+remap(all, '<leader>gd', ":!/home/maciej/.pushnotes.sh pull<CR>", { desc = "pullnotes"})
+
+remap("n", "<leader>sv", ":source $MYVIMRC<CR>")
+
+remap("n", "<leader>sc", function()
+  print(vim.opt.spell:get())
+  if vim.opt.spell:get() == false then
+    vim.opt.spelllang="pl"
+    vim.opt.spell=true
+  else
+    vim.opt.spell = false
+  end
+end
+)
+
+remap("n", "zn", "]s", { desc = "następny błąd"})
+remap("n", "zN", "[s", { desc = "poprzedni błąd"})
+remap("n", "z<leader>", function() vim.fn.feedkeys('z=') end, { desc = "Menu poprawek"})
+remap("n", "z/", function() vim.fn.feedkeys('z=1') end, { desc = "Popraw na pierwszą sugestię"})
 
