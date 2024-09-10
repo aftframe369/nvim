@@ -96,8 +96,8 @@ remap(all, 'gx', function ()
   vim.fn.execute(":!xdg-open "..vim.fn.expand("<cfile>"))
 end)
 
-remap(all, '<leader>gp', ":!/home/maciej/.pushnotes.sh push<CR>", { desc = "pushnotes"})
-remap(all, '<leader>gd', ":!/home/maciej/.pushnotes.sh pull<CR>", { desc = "pullnotes"})
+remap(all, '<leader>gp', ":!/home/maciej/.config/nvim/.pushnotes.sh push<CR>", { desc = "pushnotes"})
+remap(all, '<leader>gd', ":!/home/maciej/.config/nvim/.pushnotes.sh pull<CR>", { desc = "pullnotes"})
 
 remap("n", "<leader>sv", ":source $MYVIMRC<CR>")
 

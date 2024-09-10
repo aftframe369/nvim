@@ -1,9 +1,3 @@
-if vim.env.CHROMEBOOK == 1 then
-	Chromebook = true
-else
-	Chromebook = false
-end
-
 return {
 	-- amend keymaps
 	{
@@ -59,7 +53,7 @@ return {
 	-- See `:help lualine.txt`
 	{
 		'nvim-lualine/lualine.nvim',
-		cond = not Chromebook,
+		cond = not vim.g.Chromebook,
 		opts = {
 			options = {
 				icons_enabled = true,
@@ -73,7 +67,7 @@ return {
 		},
 	},
 
-	{ 'beauwilliams/statusline.lua', cond = Chromebook },
+	{ 'beauwilliams/statusline.lua', cond = vim.g.Chromebook},
 
 	-- surround word/selection in brackets, quotes etc.
 	-- Added better custom mappings
