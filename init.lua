@@ -1,5 +1,16 @@
 vim.g.mapleader = ' '
---vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
+
+
+if vim.env.CHROMEBOOK == 1 then
+	Chromebook = true
+else
+	Chromebook = false
+end
+
+vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
+
+-- kolejność zostałą dobrana tak, aby maksymalizować funkcjonalość
+-- jak coś zesram w konfiguracji
 
 require 'myconfig'
 require 'mappings'
@@ -14,12 +25,16 @@ vim.o.cursorline = true
 
 vim.o.conceallevel = 1
 
+
+
 require 'lazypath'
 require('lazy').setup({
 	require 'themes',
 	require 'kickstart',
 	require 'plugins'
 }, {})
+
+
 
 vim.o.background = 'light'
 -- vim.o.background = 'dark'
