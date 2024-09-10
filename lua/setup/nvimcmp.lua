@@ -1,36 +1,26 @@
-if vim.env.CHROMEBOOK == 1 then
-  Chromebook = true
-else
-  Chromebook = false
-end
-
-if Chromebook then
-  Sources = {
-    { name = 'nvim_lsp' },
-  }
-else
-  Sources = {
-    { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
-  }
-end
-
 local cmp = require 'cmp'
--- local luasnip = require 'luasnip'
--- require('luasnip.loaders.from_vscode').lazy_load()
--- luasnip.config.setup {}
+
+Light_sources = {
+  { name = 'nvim_lsp' },
+}
+
+Heavy_sources = {
+  { name = 'ultisnips' },
+  { name = 'nvim_lsp' },
+}
+
+if not vim.g.Chromebook then
+  Sources = Heavy_sources
+else
+  Sources = Light_sources
+end
 
 cmp.setup {
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      -- luasnip.lsp_expand(args.body)
     end,
   },
-  -- completion = {
-  --   completeopt = 'menu,menuone,noinsert'
-  -- },
-
   mapping = cmp.mapping.preset.insert {
     ['J'] = cmp.mapping.select_next_item(),
     ['K'] = cmp.mapping.select_prev_item(),
@@ -49,17 +39,22 @@ cmp.setup {
   sources = Sources
 }
 
-if Chromebook then
-  vim.api.nvim_create_user_command("UltiLoad", function()
-    cmp.setup {
-      sources = {
-        { name = 'nvim_lsp' },
-        { name = 'ultisnips' },
+vim.api.nvim_create_user_command("UltiSnipsSwitch", function()
+    if vim.b.Ultisnips == nil or vim.b.Ultisnips == false then
+      cmp.setup.buffer {
+        sources = Heavy_sources
       }
-    }
-  end
-  )
-end
+      vim.b.Ultisnips = true
+    else
+      cmp.setup.buffer {
+        sources = Light_sources
+      }
+      vim.b.Ultisnips = false
+    end
+  end,
+  { desc = "load ultisnips" }
+)
+
 
 cmp.event:on(
   'confirm_done',
