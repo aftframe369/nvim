@@ -83,7 +83,7 @@ return {
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
-		opts = { require 'setup.autopairs' }
+		opts = {}
 	},
 
 	-- color picker r -> HSL/rgb switch
