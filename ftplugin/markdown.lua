@@ -8,7 +8,7 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
 
 		local self = vim.fn.expand("%")
 		local pdf = vim.fn.expand("%:r") .. ".pdf"
-		local library = vim.fn.expand("%:h") .. "/library.bib"
+		local library = "~/Dokumenty/kisling/Studia/library.bib"
 		vim.fn.jobstart(
 			{
 				'pandoc', '-i', self, "-o", pdf,
