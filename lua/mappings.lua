@@ -115,7 +115,7 @@ end
 remap("n", "zn", "]s", { desc = "następny błąd"})
 remap("n", "zN", "[s", { desc = "poprzedni błąd"})
 remap("n", "z<leader>", function() vim.fn.feedkeys('z=') end, { desc = "Menu poprawek"})
-remap("n", "z/", function() vim.fn.feedkeys('z=1') end, { desc = "Popraw na pierwszą sugestię"})
+remap("n", "z/", function() vim.fn.feedkeys(']sz=1') end, { desc = "Popraw na pierwszą sugestię"})
 
 -- new recording mapping
 remap("n", "<A-r>", "q", {desc = "recording"})

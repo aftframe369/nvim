@@ -1,22 +1,3 @@
-vim.keymap.set('v', '<C-b>', 'c****<esc>hP', { buffer = 0 })
-
-vim.keymap.set('v', '<C-i>', 'c**<esc>P', { buffer = 0 })
-
-vim.keymap.set('n', '<leader>ch', function()
-	local line = vim.fn.getline('.')
-	if string.find(line, '%- %[ %]') then
-		vim.cmd([[s/\v(\s*)- \[ \]/\1- [x]/]])
-		vim.cmd('nohlsearch')
-	elseif string.find(line, '%- %[x%]') then
-		vim.cmd([[s/\v(\s*)- \[x\]/\1- [ ]/]])
-		vim.cmd('nohlsearch')
-	else
-		vim.cmd([[s/\v^(.)/- [ ] \1/]])
-		vim.cmd('nohlsearch')
-	end
-end
-)
-
 vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
 	function()
 		vim.api.nvim_command(":w")
@@ -45,8 +26,3 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', ':!zathura "%:r.pdf" & disown<CR>')
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<F7>', '<Esc>:w|' ..
 	'!pandoc -t revealjs -s "%" -o "%:r.html"<CR>')
-
-
-
-
---!pandoc -i "%" -o "%:r.pdf" --pdf-engine=lualatex --citeproc --bibliography="%:h/library.bib" -V "monofont: DejaVuSans Mono.ttf" -V lang=pl --highlight-style espresso

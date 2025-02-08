@@ -19,6 +19,8 @@ end
 -- jak coś zesram w konfiguracji
 if vim.g.Chromebook then
 	vim.g.python3_host_prog = '/home/maciej/programowanie/.venv_studia/bin/python3'
+else
+    vim.g.python3_host_prog = '/home/maciej/programowanie/.stud_venv/bin/python'
 end
 
 require 'myconfig'
