@@ -24,8 +24,8 @@ local on_attach = require('setup.lsp_onattach')
 require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Enable the following language servers
 local servers = {
@@ -61,7 +61,7 @@ mason_lspconfig.setup_handlers {
   end,
 };
 
-require('setup.nvimcmp')
+-- require('setup.nvimcmp')
 
 -- require 'lspconfig'.pyright.setup({
 --   on_attach = on_attach,

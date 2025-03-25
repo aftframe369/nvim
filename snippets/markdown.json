@@ -1,0 +1,33 @@
+{
+	"checkbox" : {
+		"prefix" : "ch",
+		"body" : [
+			"- [ ] $0"
+		]
+	},
+
+	"checkbox-marked" : {
+		"prefix" : "chx",
+		"body" : [
+			"- [x] $0"
+		]
+	},
+
+	"Report preamble" : {
+		"prefix" : "yaml",
+		"body": [
+				"---",
+				"title:  '${1:title}'",
+				"subtitle: 'Laboratorium ${2:czegoś}'",
+				"author:",
+				"- Maciej Gliński 240865",
+				"date: 'Data ćwiczenia: ${3:date}'",
+				"keywords:",
+				"abstract: ",
+				"include-before: '`\\newpage{}`{=latex}'",
+				"header-includes:",
+				"- \\babelprovide[transforms = oneletter.nobreak]{polish} ",
+				"--- $0"
+		]
+	}
+}

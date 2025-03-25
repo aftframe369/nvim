@@ -65,12 +65,7 @@ return {
 				, { desc = 'delete highlight of search' })
 		end
 	},
-	--
-	--	--formatter, DAP, Linter support for Mason
-	--	{ 'mhartington/formatter.nvim', },
-	--	{ 'mfussenegger/nvim-dap', },
-	--	{ 'mfussenegger/nvim-dap-python', },
-	--	{ 'mfussenegger/nvim-lint', },
+
 	{ 'nvimtools/none-ls.nvim' },
 	{
 		"zeioth/none-ls-autoload.nvim",
@@ -92,17 +87,25 @@ return {
 			'SirVer/ultisnips',
 			'honza/vim-snippets',
 			'quangnguyen30192/cmp-nvim-ultisnips',
-			-- 'L3MON4D3/LuaSnip',
-			-- 'saadparwaiz1/cmp_luasnip'
 		},
+		cond = false
 	},
 
 
-	-- Set lualine as statusline
-	-- See `:help lualine.txt`
+	{
+		'saghen/blink.compat',
+		lazy = true,
+		opts = {},
+	},
+	{
+		'saghen/blink.cmp',
+		dependencies = require('setup.blink').deps,
+		opts = require('setup.blink').opts,
+		version = '1.*',
+	},
+
 	{
 		'nvim-lualine/lualine.nvim',
-		-- cond = not vim.g.Chromebook,
 		opts = {
 			options = {
 				icons_enabled = false,
@@ -111,11 +114,12 @@ return {
 				section_separators = { left = '', right = '' },
 			},
 			sections = {
-					lualine_a = {'mode'},
-					lualine_b = { "os.date('%d-%m  %H:%M')" },
-					lualine_c = { "filename", "diff"},
-					lualine_x = { "vim.fn.getcwd():gsub('/home/maciej', '~')", 'filetype'} }
-			},
+				lualine_a = { 'mode' },
+				lualine_b = { "os.date('%d-%m  %H:%M')" },
+				lualine_c = { "filename", "diff" },
+				lualine_x = { "vim.fn.getcwd():gsub('/home/maciej', '~')", 'filetype' }
+			}
+		},
 	},
 
 	-- surround word/selection in brackets, quotes etc.
@@ -124,11 +128,8 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround',          init = require('setup.surround') },
+	{ 'tpope/vim-surround',  init = require('setup.surround') },
 
-	-- -- autopair brackets and quotes
-	-- { 'jiangmiao/auto-pairs', },
-	--
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
@@ -137,9 +138,6 @@ return {
 
 	-- color picker r -> HSL/rgb switch
 	{ 'ziontee113/color-picker.nvim', opts = {} },
-
-	-- java server
-	--	{ 'mfussenegger/nvim-jdtls' },
 
 	-- Useful plugin to show you pending keybinds.
 	{ 'folke/which-key.nvim',         opts = {} },
@@ -151,32 +149,11 @@ return {
 	{
 		'boltlessengineer/smart-tab.nvim',
 		opts = {
-			-- default options:
-			-- list of tree-sitter node types to filter
-			-- skips = { "string_content" },
 			mapping = "<tab>",
 		}
 	},
 
-
-
-
-	-- -- Navbuddy, use :Navbuddy to quickly jump to objects and functions in buffer
-	-- Disabled because of breaking changes and not used anyway
-
-	-- {
-	-- 	"SmiteshP/nvim-navbuddy",
-	-- 	dependencies = {
-	-- 		"SmiteshP/nvim-navic",
-	-- 		"MunifTanjim/nui.nvim"
-	-- 	},
-	-- 	opts = { lsp = { auto_attach = true } }
-	-- },
-
-
-	-- --Better file explorer, I to see help
-	-- { 'tpope/vim-vinegar'},
-
+	--Oil
 	{ require("setup.oil") },
 
 	-- leap to 2char sequence with s, or gs backwards.
@@ -188,19 +165,4 @@ return {
 
 	-- table mode, :tableMode or <leader>tm to enter table.
 	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') },
-
-	--{
-	--	"iamcco/markdown-preview.nvim",
-	--	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	--	ft = { "markdown" },
-	--	build = function() vim.fn["mkdp#util#install"]() end,
-	--	init = function()
-	--		vim.g.mkdp_preview_options = {
-	--			mkit = {
-	--				breaks = true
-	--			}
-	--		}
-	--	end,
-	--},
-
 }

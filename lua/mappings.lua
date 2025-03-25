@@ -154,9 +154,12 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		vim.keymap.set(
 			"n", "<leader><leader>",
-			function() vim.cmd("e #<1") end,
+			"<C-o>",
 			{ buffer = 0 }
 		)
 		return true
 	end,
 })
+
+
+
