@@ -31,7 +31,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  pyright = {},
+  -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- jedi_language_server = {},
@@ -63,30 +63,30 @@ mason_lspconfig.setup_handlers {
 
 require('setup.nvimcmp')
 
-require 'lspconfig'.pyright.setup({
-  on_attach = on_attach,
-  settings = {
-    pyright = { autoImportCompletion = true, },
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = 'openFilesOnly',
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = 'on'
-      }
-    }
-  }
-})
+-- require 'lspconfig'.pyright.setup({
+--   on_attach = on_attach,
+--   settings = {
+--     pyright = { autoImportCompletion = true, },
+--     python = {
+--       analysis = {
+--         autoSearchPaths = true,
+--         diagnosticMode = 'openFilesOnly',
+--         useLibraryCodeForTypes = true,
+--         typeCheckingMode = 'on'
+--       }
+--     }
+--   }
+-- })
 
-require 'lspconfig'.ruff_lsp.setup({
-  on_attach = on_attach,
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
-    }
-  }
-})
+-- require 'lspconfig'.ruff_lsp.setup({
+--   on_attach = on_attach,
+--   init_options = {
+--     settings = {
+--       -- Any extra CLI arguments for `ruff` go here.
+--       args = {},
+--     }
+--   }
+-- })
 
 require 'lspconfig'.emmet_ls.setup({
   -- on_attach = on_attach,

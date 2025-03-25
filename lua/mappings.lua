@@ -42,7 +42,7 @@ remap('n', '<leader>e', ':Oil<CR>')
 
 remap({ 'v', 'n' }, '<C-c>', '"+y"')
 remap('n', '<leader><leader>', '<c-^>zz',
-  { silent = false, noremap = true, desc = 'Previous buffer' })
+	{ silent = false, noremap = true, desc = 'Previous buffer' })
 
 remap({ 'n', 'v' }, '<leader>ws', ':sp<CR>', { desc = 'Split Horizontal' })
 remap({ 'n', 'v' }, '<leader>wv', ':vs<CR>', { desc = 'Split Vertically' })
@@ -84,18 +84,18 @@ local after_dot = [[(['"\>)}]\.)@<=(\w)]]
 local first_word = [[^(\w)]]
 local char_in_quotes = [[(['"])@<=\S?(['"])]]
 
-local pattern = [[\v]] .. 
-              definition .. "|" ..
-              after_bracket .. "|" ..
-              after_dot .. "|" ..
-              first_word .. "|" ..
-              char_in_quotes
+local pattern = [[\v]] ..
+	definition .. "|" ..
+	after_bracket .. "|" ..
+	after_dot .. "|" ..
+	first_word .. "|" ..
+	char_in_quotes
 
 vim.keymap.set({ 'n', 'v' }, '<A-w>', function()
-  vim.fn.search(pattern)
+	vim.fn.search(pattern)
 end)
 vim.keymap.set({ 'n', 'v' }, '<A-q>', function()
-  vim.fn.search(pattern, 'b')
+	vim.fn.search(pattern, 'b')
 end)
 
 -- save and source current file
@@ -104,37 +104,37 @@ vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.keymap.set('i', '<C-j>', '<Esc>')
 
-vim.api.nvim_create_user_command("Dark", function ()
-  vim.o.background = 'dark'
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+vim.api.nvim_create_user_command("Dark", function()
+	vim.o.background = 'dark'
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
 end, { desc = 'darkmode' })
 
 vim.api.nvim_create_user_command("Light", function()
-  vim.o.background = 'light'
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+	vim.o.background = 'light'
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
 end, { desc = 'lightmode' })
 
-remap(all, 'gx', function ()
-  vim.fn.execute(":!xdg-open "..vim.fn.expand("<cfile>"))
+remap(all, 'gx', function()
+	vim.fn.execute(":!xdg-open " .. vim.fn.expand("<cfile>"))
 end)
 
-remap(all, '<leader>gp', ":!/home/maciej/.config/nvim/.pushnotes.sh push<CR>", { desc = "pushnotes"})
-remap(all, '<leader>gd', ":!/home/maciej/.config/nvim/.pushnotes.sh pull<CR>", { desc = "pullnotes"})
+remap(all, '<leader>gp', ":!/home/maciej/.config/nvim/.pushnotes.sh push<CR>", { desc = "pushnotes" })
+remap(all, '<leader>gd', ":!/home/maciej/.config/nvim/.pushnotes.sh pull<CR>", { desc = "pullnotes" })
 
 remap("n", "<leader>sv", ":source $MYVIMRC<CR>")
 
 remap("n", "<leader>sc", function()
-  print(vim.opt.spell:get())
-  if vim.opt.spell:get() == false then
-    vim.opt.spelllang="pl"
-    vim.opt.spell=true
-  else
-    vim.opt.spell = false
-  end
-end,
-  { desc="spellcheck" }
+		print(vim.opt.spell:get())
+		if vim.opt.spell:get() == false then
+			vim.opt.spelllang = "pl"
+			vim.opt.spell = true
+		else
+			vim.opt.spell = false
+		end
+	end,
+	{ desc = "spellcheck" }
 )
 remap("n", "zn", "]s", { desc = "następny błąd"})
 remap("n", "zN", "[s", { desc = "poprzedni błąd"})
@@ -143,8 +143,20 @@ remap("n", "z/", function() vim.fn.feedkeys('1z=') end, { desc = "Popraw na pier
 remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw następny automatycznie"})
 
 -- new recording mapping
-remap("n", "<A-r>", "q", {desc = "recording"})
+remap("n", "<A-r>", "q", { desc = "recording" })
 
-remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".")-1, "") end)
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end)
 remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end)
 remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end)
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.keymap.set(
+			"n", "<leader><leader>",
+			function() vim.cmd("e #<1") end,
+			{ buffer = 0 }
+		)
+		return true
+	end,
+})
