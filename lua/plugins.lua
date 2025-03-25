@@ -109,18 +109,17 @@ return {
 				theme = 'auto',
 				component_separators = { left = '', right = '' },
 				section_separators = { left = '', right = '' },
-				sections = {
-					lualine_b = {
-						"os.date('%a')",
-						'data',
-						"require'lsp-status'.status()" }
-				}
 			},
-		},
+			sections = {
+					lualine_a = {'mode'},
+					lualine_b = { "os.date('%d-%m  %H:%M')" },
+					lualine_c = { "filename", "diff"},
+					lualine_x = { "vim.fn.getcwd():gsub('/home/maciej', '~')", 'filetype'} }
+			},
 	},
 
 	-- surround word/selection in brackets, quotes etc.
-	-- Added better custom mappings
+	-- Added better custom mapping's
 	-- S mnemonic to surround
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
