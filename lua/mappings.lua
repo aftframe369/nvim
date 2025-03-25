@@ -3,34 +3,46 @@ local remap = vim.keymap.set
 local all = { 'o', 'n', 'v', 'x' }
 
 -- vim.keymap.set('i', '<C-x>', '<C-x><C-f>')
-remap(all, 'q', 'b')                 -- q przesuwa do początku słowa na lewo. Bardziej intuicyjne, bo na lewo od 'w'
-remap(all, 'D', 'dd')                -- q przesuwa do początku słowa na lewo. Bardziej intuicyjne, bo na lewo od 'w'
-remap(all, 'Q', 'B')                 -- Q przesuwa do początku SŁOWA na lewo. Bardziej intuicyjne, bo na lewo od 'w'
-remap('i', '<C-BS>', '<C-W>')        --Ctrl backspace usuwa całe słowo w insert mode
-remap('i', '<C-del>', '<Esc>ce')     --Ctrl delete usuwa słowo w insert mode
-remap('n', '<CR>', 'o')              --Enter in normal mode starts insert in line below
-remap(all, '-', '$')                 -- replace dolar with - as go to end of line, way better and next to 0 - start of line
-remap(all, '0', '^')                 -- replace dolar with - as go to end of line, way better and next to 0 - start of line
+-- D szybsze niż dd, a nie podoba mi się Vd
+remap(all, 'D', 'dd')
 
-remap(all, '<C-t>', '<Esc>:tabnew ') -- ctrl - t makes a new tab (click enter to confirm)
+-- q przesuwa do początku słowa na lewo. Bardziej intuicyjne, bo na lewo od 'w'
+-- Q przesuwa do początku SŁOWA na lewo. Bardziej intuicyjne, bo na lewo od 'w'
+remap(all, 'q', 'b')
+remap(all, 'Q', 'B')
 
-remap('n', 'K', ':m .-2<CR>==')      --use J and K to move lines up and down
+--Ctrl backspace usuwa całe słowo w insert mode
+remap('i', '<C-BS>', '<C-W>')
+--Ctrl delete usuwa słowo w insert mode
+remap('i', '<C-del>', '<Esc>ce')
+
+--Enter in normal mode starts insert in line below
+remap('n', '<CR>', 'o')
+--
+-- replace dolar with - as go to end of line, way better and next to 0 - start of line
+remap(all, '-', '$')
+
+-- 0 jako pierwszy znak, a nie początek linijki. Częściej używane to zamieniam je.
+remap(all, '0', '^')
+remap(all, '^', '0')
+
+--use J and K to move lines up and down
+remap('n', 'K', ':m .-2<CR>==')
 remap('n', 'J', ':m .+1<CR>==')
 remap("v", "J", ":m '>+1<CR>gv=gv")
 remap("v", "K", ":m '<-2<CR>gv=gv")
 remap({ 'n', 'v' }, 'L', 'J', { noremap = true })
 remap({ 'n', 'v' }, 'H', 'K', { noremap = true })
 
-
-remap(all, 'b', '%') --bb jumps to matching brackets
+--bb jumps to matching brackets
+remap(all, 'b', '%')
 
 -- remap('n', '<leader>e', ':Explore<CR>')
 remap('n', '<leader>e', ':Oil<CR>')
 
--- remap('n', '<Tab>', '}') --Use tab to jump to next paragraph
-
 remap({ 'v', 'n' }, '<C-c>', '"+y"')
-remap('n', '<leader><leader>', '<c-^>zz', { silent = false, noremap = true, desc = 'Previous buffer' })
+remap('n', '<leader><leader>', '<c-^>zz',
+  { silent = false, noremap = true, desc = 'Previous buffer' })
 
 remap({ 'n', 'v' }, '<leader>ws', ':sp<CR>', { desc = 'Split Horizontal' })
 remap({ 'n', 'v' }, '<leader>wv', ':vs<CR>', { desc = 'Split Vertically' })
@@ -44,7 +56,6 @@ remap({ 'n', 'v' }, '<leader>wl', '<C-w>l', { desc = 'Go to window l' })
 remap({ 'n', 'v' }, '<leader>wp', '<C-w>p', { desc = 'Go to previous window' })
 remap({ 'n', 'v' }, '<leader>w]', '<C-w>v<C-]>', { desc = 'open file in new window' })
 remap({ 'n', 'v' }, '<leader>wf', '<C-w>_', { desc = 'Max window height' })
--- nmap('D', vim.lsp.buf.hover, 'Hover Documentation')  HOVER THE Documentation - copy from lsp.lua, for reference
 
 -- The coolest (WORD) movement - jump to every interesting text
 -- Includes - the dumbest regex you have ever seen
@@ -66,7 +77,20 @@ remap({ 'n', 'v' }, '<leader>wf', '<C-w>_', { desc = 'Max window height' })
 -- will match ';', ";' and ';" which is funny, but not that big of a deal
 -- Add any delimiters i have not included inside the [][(){}.,;]
 
-local pattern = [[\v['"({[<> ]@<=(\w)|^(\w)|(['"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
+
+local definition = [[([\=\,\:]\s{-}|\t|\s{2,})@<=(\w)]]
+local after_bracket = [[(['"({[<>]\s?)@<=(\w|[:\-%$^&*#@!+|])]]
+local after_dot = [[(['"\>)}]\.)@<=(\w)]]
+local first_word = [[^(\w)]]
+local char_in_quotes = [[(['"])@<=\S?(['"])]]
+
+local pattern = [[\v]] .. 
+              definition .. "|" ..
+              after_bracket .. "|" ..
+              after_dot .. "|" ..
+              first_word .. "|" ..
+              char_in_quotes
+
 vim.keymap.set({ 'n', 'v' }, '<A-w>', function()
   vim.fn.search(pattern)
 end)
@@ -109,13 +133,18 @@ remap("n", "<leader>sc", function()
   else
     vim.opt.spell = false
   end
-end
+end,
+  { desc="spellcheck" }
 )
-
 remap("n", "zn", "]s", { desc = "następny błąd"})
 remap("n", "zN", "[s", { desc = "poprzedni błąd"})
 remap("n", "z<leader>", function() vim.fn.feedkeys('z=') end, { desc = "Menu poprawek"})
-remap("n", "z/", function() vim.fn.feedkeys(']sz=1') end, { desc = "Popraw na pierwszą sugestię"})
+remap("n", "z/", function() vim.fn.feedkeys('1z=') end, { desc = "Popraw na pierwszą sugestię"})
+remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw następny automatycznie"})
 
 -- new recording mapping
 remap("n", "<A-r>", "q", {desc = "recording"})
+
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".")-1, "") end)
+remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end)
+remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end)
