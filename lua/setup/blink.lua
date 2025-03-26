@@ -2,8 +2,6 @@ local M = {}
 
 M.deps = {
 	"rafamadriz/friendly-snippets",
-	'honza/vim-snippets',
-	'SirVer/ultisnips',
 }
 
 M.opts = {
