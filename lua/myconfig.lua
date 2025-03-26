@@ -37,7 +37,12 @@ vim.o.mousescroll = 'ver:3'
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamed'
+--
+if vim.g.Chromebook == true then
+	vim.o.clipboard = ''
+else
+	vim.o.clipboard = 'unnamed'
+end
 
 -- Enable break indent
 vim.o.breakindent = true
