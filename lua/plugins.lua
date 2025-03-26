@@ -83,14 +83,16 @@ return {
 	{
 		'saghen/blink.compat',
 		lazy = true,
-		opts = {},
+		opts = {
+			impersonate_nvim_cmp = true,
+		},
 	},
 	{
 		'saghen/blink.cmp',
 		dependencies = require('setup.blink').deps,
 		opts = require('setup.blink').opts,
 		version = '1.*',
-		init =  require('setup.blink').init,
+		init = require('setup.blink').init,
 	},
 
 	--lualine
@@ -130,7 +132,7 @@ return {
 	{ 'ziontee113/color-picker.nvim', opts = {} },
 
 	-- Useful plugin to show you pending keybinds.
-	{ 'folke/which-key.nvim', opts = require('setup.whichkey').opts },
+	{ 'folke/which-key.nvim',         opts = require('setup.whichkey').opts },
 
 	-- Add indentation guides even on blank lines
 	{ require 'setup.blanklines' },

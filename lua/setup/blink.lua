@@ -12,7 +12,7 @@ M.opts = {
 		['J'] = { 'select_next', 'fallback' },
 		['L'] = { 'accept', 'fallback' },
 		['<C-j>'] = { 'snippet_forward', 'fallback' },
-		['<C-k>'] = { 'show_documentation', "hide_documentation",'snippet_backward', 'fallback' },
+		['<C-k>'] = { 'show_documentation', "hide_documentation", 'snippet_backward', 'fallback' },
 		['<CR>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
@@ -31,7 +31,6 @@ M.opts = {
 		['<C-H>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
 		['<C-x>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end, 'fallback' }
 	},
-
 	appearance = {
 		nerd_font_variant = '',
 		use_nvim_cmp_as_default = true,
@@ -82,16 +81,23 @@ M.opts = {
 			window = { border = 'single' },
 		},
 
+		trigger = {
+			show_on_trigger_character = true,
+		}
+
 	},
 
 	sources = {
-		default = { 'lsp', 'path', 'snippets'},
+		default = { 'lsp', 'path', 'snippets' },
+		per_filetype = {
+			markdown = { "buffer" },
+		},
+		providers = {}
 	},
-
 	fuzzy = { implementation = "prefer_rust_with_warning" }
 }
 
 M.init = function()
-	end
+end
 
 return M
