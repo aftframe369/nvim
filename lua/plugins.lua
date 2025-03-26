@@ -148,10 +148,23 @@ return {
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
-	{ 'ggandor/leap.nvim',          init = require('setup.leap') },
+	{ 'ggandor/leap.nvim', init = require('setup.leap') },
 
 	-- obsydian integration plugin
-	{ require('setup.obsydian') },
+	{
+		-- "obsidian-nvim/obsidian.nvim",
+		dir = "/home/maciej/.config/nvim/packages/obsidian.nvim/",		
+		lazy = true,
+		version = '*',
+		ft = "markdown",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			-- 'saghen/blink.compat',
+			'saghen/blink.cmp',
+		},
+		opts = require("setup.obsydian").opts,
+		init = require("setup.obsydian").init,
+	},
 
 	-- table mode, :tableMode or <leader>tm to enter table.
 	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') },
