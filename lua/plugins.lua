@@ -140,7 +140,7 @@ return {
 	{ 'ziontee113/color-picker.nvim', opts = {} },
 
 	-- Useful plugin to show you pending keybinds.
-	{ 'folke/which-key.nvim',         opts = {} },
+	{ 'folke/which-key.nvim', opts = require('setup.whichkey').opts },
 
 	-- Add indentation guides even on blank lines
 	{ require 'setup.blanklines' },
