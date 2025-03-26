@@ -79,19 +79,7 @@ return {
 	{ 'dccsillag/magma-nvim' },
 
 
-	-- Autocompletion
-	{
-		'hrsh7th/nvim-cmp',
-		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'SirVer/ultisnips',
-			'honza/vim-snippets',
-			'quangnguyen30192/cmp-nvim-ultisnips',
-		},
-		cond = false
-	},
-
-
+	-- autocompletion
 	{
 		'saghen/blink.compat',
 		lazy = true,
@@ -102,8 +90,10 @@ return {
 		dependencies = require('setup.blink').deps,
 		opts = require('setup.blink').opts,
 		version = '1.*',
+		init =  require('setup.blink').init,
 	},
 
+	--lualine
 	{
 		'nvim-lualine/lualine.nvim',
 		opts = {
@@ -160,8 +150,8 @@ return {
 	-- Two custom mappings nothing more, quite enough
 	{ 'ggandor/leap.nvim',          init = require('setup.leap') },
 
-	-- -- obsydian integration plugin
-	-- { require('setup.obsydian') },
+	-- obsydian integration plugin
+	{ require('setup.obsydian') },
 
 	-- table mode, :tableMode or <leader>tm to enter table.
 	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') },

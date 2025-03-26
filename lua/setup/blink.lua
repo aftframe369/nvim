@@ -12,7 +12,7 @@ M.opts = {
 		['J'] = { 'select_next', 'fallback' },
 		['L'] = { 'accept', 'fallback' },
 		['<C-j>'] = { 'snippet_forward', 'fallback' },
-		['<C-k>'] = { 'snippet_backward', 'fallback' },
+		['<C-k>'] = { 'show_documentation', "hide_documentation",'snippet_backward', 'fallback' },
 		['<CR>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
@@ -25,7 +25,6 @@ M.opts = {
 			end
 			, 'fallback' },
 
-		['<C-K>'] = { 'show_documentation', "hide_documentation", 'fallback' },
 		['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 		['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 
@@ -34,39 +33,39 @@ M.opts = {
 	},
 
 	appearance = {
-		nerd_font_variant = 'mono',
+		nerd_font_variant = '',
 		use_nvim_cmp_as_default = true,
 		kind_icons = {
-			Text = 't',
-			Method = 'f',
-			Function = 'f',
+			Text = '☰',
+			Method = 'm()',
+			Function = 'f()',
 			Constructor = 'constructor',
 
-			Field = 'f',
-			Variable = 'v',
-			Property = 'p',
+			Field = 'field',
+			Variable = 'x=',
+			Property = 'prop',
 
 			Class = 'cl',
 			Interface = 'inter ',
 			Struct = 'struct',
 			Module = '{}',
 
-			Unit = 'u',
-			Value = '',
-			Enum = '',
-			EnumMember = '',
+			Unit = 'μ',
+			Value = 'val',
+			Enum = 'en',
+			EnumMember = 'en',
 
 			Keyword = 'id',
-			Constant = 'cons',
+			Constant = 'const',
 
-			Snippet = 's',
-			Color = 'c',
-			File = 'f',
-			Reference = 'r',
+			Snippet = '☰x☰',
+			Color = 'rgb',
+			File = 'file',
+			Reference = 'ref',
 			Folder = '/',
-			Event = '',
-			Operator = '',
-			TypeParameter = 't',
+			Event = 'event',
+			Operator = 'oper',
+			TypeParameter = 'type',
 		},
 	},
 
@@ -80,23 +79,19 @@ M.opts = {
 
 		documentation = {
 			auto_show = false,
+			window = { border = 'single' },
 		},
 
 	},
 
 	sources = {
-		default = { 'lsp', 'path', 'snippets', 'ultisnips' },
-		providers = {
-			ultisnips = {
-				name = "ultisnips",
-				module = 'blink.compat.source',
-				score_offset = -3
-			}
-		}
+		default = { 'lsp', 'path', 'snippets'},
 	},
 
 	fuzzy = { implementation = "prefer_rust_with_warning" }
 }
 
+M.init = function()
+	end
 
 return M

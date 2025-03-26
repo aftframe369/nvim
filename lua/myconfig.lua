@@ -39,7 +39,6 @@ vim.o.mousescroll = 'ver:3'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamed'
 
---kickstarts config
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -66,13 +65,6 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set({'n', 'v'}, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.g.kp = ':help'
 

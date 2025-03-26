@@ -26,6 +26,12 @@ remap(all, '-', '$')
 remap(all, '0', '^')
 remap(all, '^', '0')
 
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+vim.keymap.set({'n', 'v'}, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 --use J and K to move lines up and down
 remap('n', 'K', ':m .-2<CR>==')
 remap('n', 'J', ':m .+1<CR>==')
@@ -33,6 +39,7 @@ remap("v", "J", ":m '>+1<CR>gv=gv")
 remap("v", "K", ":m '<-2<CR>gv=gv")
 remap({ 'n', 'v' }, 'L', 'J', { noremap = true })
 remap({ 'n', 'v' }, 'H', 'K', { noremap = true })
+
 
 --bb jumps to matching brackets
 remap(all, 'b', '%')
@@ -145,9 +152,9 @@ remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw nastÄ
 -- new recording mapping
 remap("n", "<A-r>", "q", { desc = "recording" })
 
-remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end)
-remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end)
-remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end)
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end, {desc = 'add line above'})
+remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, {desc = 'add line below'})
+remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end, {desc = 'add line below'})
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	pattern = { "*" },
@@ -166,3 +173,17 @@ vim.api.nvim_create_user_command("Kisling", "Oil ~/Dokumenty/kisling/", {desc="k
 remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", {desc="Change spellang"})
 
 remap("x", ".", ":norm .<CR>", {desc="repeat action for selection"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
