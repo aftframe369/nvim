@@ -18,7 +18,7 @@ remap('i', '<C-del>', '<Esc>ce')
 
 --Enter in normal mode starts insert in line below
 remap('n', '<CR>', 'o')
---
+
 -- replace dolar with - as go to end of line, way better and next to 0 - start of line
 remap(all, '-', '$')
 
@@ -161,5 +161,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	end,
 })
 
+vim.api.nvim_create_user_command("Kisling", "Oil ~/Dokumenty/kisling/", {desc="kisling"})
 
+remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", {desc="Change spellang"})
 
+remap("x", ".", ":norm .<CR>", {desc="repeat action for selection"})
