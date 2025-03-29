@@ -3,5 +3,5 @@ if vim.fn.getline(1) == "" then
 end
 
 
-vim.keymap.set('n', '<F5>', ":w | ! './%'<CR>", { buffer = 0 })
+vim.keymap.set('n', '<F5>', ":w | ! '%'<CR>", { buffer = 0 })
 

@@ -1,4 +1,4 @@
---Global lsp shortcuts and config
+--Global lsp shortcuts and configlsp
 local remap = vim.keymap.set
 local modes = { 'n', 'v', 'x' }
 remap(modes, '<leader>lh', function()
@@ -31,7 +31,7 @@ require('neodev').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- jedi_language_server = {},
@@ -63,20 +63,20 @@ mason_lspconfig.setup_handlers {
 
 -- require('setup.nvimcmp')
 
--- require 'lspconfig'.pyright.setup({
---   on_attach = on_attach,
---   settings = {
---     pyright = { autoImportCompletion = true, },
---     python = {
---       analysis = {
---         autoSearchPaths = true,
---         diagnosticMode = 'openFilesOnly',
---         useLibraryCodeForTypes = true,
---         typeCheckingMode = 'on'
---       }
---     }
---   }
--- })
+require 'lspconfig'.pyright.setup({
+  on_attach = on_attach,
+  settings = {
+    pyright = { autoImportCompletion = true, },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = 'on'
+      }
+    }
+  }
+})
 
 -- require 'lspconfig'.ruff_lsp.setup({
 --   on_attach = on_attach,

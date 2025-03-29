@@ -51,12 +51,18 @@ M.opts = {
 			end,
 			opts = { buffer = true },
 		},
-		["<leader>o?"] = {
+		["<leader>."] = {
 			action = function()
 				vim.api.nvim_command(":ObsidianSearch")
 			end,
-			opts = {}
-		}
+			opts = { noremap = false, expr = false, buffer = true },
+		},
+		["<leader>q"] = {
+			action = function()
+				return vim.cmd(":ObsidianQuickSwitch")
+			end,
+			opts = { noremap = false, expr = false, buffer = true },
+		},
 
 	},
 	note_id_func = function(title)

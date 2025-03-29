@@ -85,7 +85,7 @@ remap({ 'n', 'v' }, '<leader>wf', '<C-w>_', { desc = 'Max window height' })
 -- Add any delimiters i have not included inside the [][(){}.,;]
 
 
-local definition = [[([\=\,\:]\s{-}|\t|\s{2,})@<=(\w)]]
+local definition = [[([\=\,\:\-\+\*]\s{-}|\t|\s{2,})@<=(\w)]]
 local after_bracket = [[(['"({[<>]\s?)@<=(\w|[:\-%$^&*#@!+|])]]
 local after_dot = [[(['"\>)}]\.)@<=(\w)]]
 local first_word = [[^(\w)]]

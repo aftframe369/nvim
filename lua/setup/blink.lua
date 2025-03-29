@@ -8,12 +8,11 @@ M.opts = {
 	-- See :h blink-cmp-config-keymap for defining your own keymap
 	keymap = {
 		preset = 'none',
-		['K'] = { 'select_prev', 'fallback' },
-		['J'] = { 'select_next', 'fallback' },
-		['L'] = { 'accept', 'fallback' },
-		['<C-j>'] = { 'snippet_forward', 'fallback' },
-		['<C-k>'] = { 'show_documentation', "hide_documentation", 'snippet_backward', 'fallback' },
-		['<CR>'] = { 'select_and_accept', 'fallback' },
+		['<C-k>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+		['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
+		['<C-l>'] = { 'accept', 'fallback' },
+		['<C-K>'] = { 'show_documentation', "hide_documentation", 'fallback' },
+		['<C-e>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
 				if cmp.cancel() then
@@ -91,6 +90,7 @@ M.opts = {
 		default = { 'lsp', 'path', 'snippets' },
 		per_filetype = {
 			markdown = { "buffer" },
+			sh = { "buffer" },
 		},
 		providers = {}
 	},
