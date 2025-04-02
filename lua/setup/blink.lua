@@ -16,7 +16,7 @@ M.opts = {
 		['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 		['<C-d>'] = { 'show_documentation', "scroll_documentation_down", 'fallback' },
 
-		['<C-;>'] = { 'select_and_accept', 'fallback' },
+		['<c-y>'] = { 'select_and_accept', 'fallback' },
 		['<C-CR>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
@@ -102,7 +102,7 @@ M.opts = {
 	sources = {
 		default = { 'lsp', 'path', 'snippets' },
 		per_filetype = {
-			markdown = { "buffer" },
+			markdown = { "buffer", "snippets" },
 			sh = { "buffer" },
 		},
 		providers = {}

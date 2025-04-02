@@ -154,9 +154,9 @@ remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", { desc = "Change spellang
 -- new recording mapping
 remap("n", "<A-r>", "q", { desc = "recording" })
 
-remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
+remap("n", "<leader>O", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
 remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
-remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	pattern = { "*" },
