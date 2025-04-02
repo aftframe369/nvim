@@ -156,7 +156,7 @@ return {
 	{
 		"aftframe369/obsidian.nvim",
 		-- dir = "/home/maciej/.programy/obsidian.nvim/",
-		lazy = true,
+		lazy = false,
 		version = '*',
 		ft = "markdown",
 		dependencies = {

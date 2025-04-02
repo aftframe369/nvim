@@ -12,6 +12,11 @@ M.opts = {
 		['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
 		['<C-l>'] = { 'accept', 'fallback' },
 		['<C-K>'] = { 'show_documentation', "hide_documentation", 'fallback' },
+
+		['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+		['<C-d>'] = { 'show_documentation', "scroll_documentation_down", 'fallback' },
+
+		['<C-;>'] = { 'select_and_accept', 'fallback' },
 		['<C-CR>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
@@ -24,8 +29,6 @@ M.opts = {
 			end
 			, 'fallback' },
 
-		['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
-		['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 
 		['<C-H>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
 		['<C-x>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end, 'fallback' }
