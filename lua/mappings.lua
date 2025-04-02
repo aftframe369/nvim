@@ -29,8 +29,8 @@ remap(all, '^', '0')
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set({'n', 'v'}, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 --use J and K to move lines up and down
 remap('n', 'K', ':m .-2<CR>==')
@@ -107,7 +107,6 @@ end)
 
 -- save and source current file
 vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
-vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.keymap.set('i', '<C-j>', '<Esc>')
 
@@ -127,10 +126,12 @@ remap(all, 'gx', function()
 	vim.fn.execute(":!xdg-open " .. vim.fn.expand("<cfile>"))
 end)
 
-remap(all, '<leader>gp', ":!/home/maciej/.config/nvim/.pushnotes.sh push<CR>", { desc = "pushnotes" })
-remap(all, '<leader>gd', ":!/home/maciej/.config/nvim/.pushnotes.sh pull<CR>", { desc = "pullnotes" })
+remap(all, '<leader>gp', ":!/home/maciej/.config/dotfiles/pushnotes.sh push /home/maciej/Dokumenty/kisling/<CR>",
+	{ desc = "pushnotes" })
+remap(all, '<leader>gd', ":!/home/maciej/.config/dotfiles/pushnotes.sh pull /home/maciej/Dokumenty/kisling/<CR>",
+	{ desc = "pullnotes" })
 
-remap("n", "<leader>sv", ":source $MYVIMRC<CR>")
+-- remap("n", "<leader>sv", ":source $MYVIMRC<CR>") nie działa bo lazy nie lubi reloadów
 
 remap("n", "<leader>sc", function()
 		print(vim.opt.spell:get())
@@ -143,18 +144,19 @@ remap("n", "<leader>sc", function()
 	end,
 	{ desc = "spellcheck" }
 )
-remap("n", "zn", "]s", { desc = "następny błąd"})
-remap("n", "zN", "[s", { desc = "poprzedni błąd"})
-remap("n", "z<leader>", function() vim.fn.feedkeys('z=') end, { desc = "Menu poprawek"})
-remap("n", "z/", function() vim.fn.feedkeys('1z=') end, { desc = "Popraw na pierwszą sugestię"})
-remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw następny automatycznie"})
+remap("n", "zn", "]s", { desc = "następny błąd" })
+remap("n", "zN", "[s", { desc = "poprzedni błąd" })
+remap("n", "z<leader>", function() vim.fn.feedkeys('z=') end, { desc = "Menu poprawek" })
+remap("n", "z/", function() vim.fn.feedkeys('1z=') end, { desc = "Popraw na pierwszą sugestię" })
+remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw następny automatycznie" })
+remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", { desc = "Change spellang" })
 
 -- new recording mapping
 remap("n", "<A-r>", "q", { desc = "recording" })
 
-remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end, {desc = 'add line above'})
-remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, {desc = 'add line below'})
-remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end, {desc = 'add line below'})
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
+remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
+remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	pattern = { "*" },
@@ -168,22 +170,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_user_command("Kisling", "Oil ~/Dokumenty/kisling/", {desc="kisling"})
-
-remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", {desc="Change spellang"})
-
-remap("x", ".", ":norm .<CR>", {desc="repeat action for selection"})
+vim.api.nvim_create_user_command("Kisling", "Oil ~/Dokumenty/kisling/", { desc = "kisling" })
+remap('n', '<leader>qs', function() vim.cmd(":ObsidianQuickSwitch") end, { desc = "ObsidianQuickSwitch" })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+remap("x", ".", ":norm .<CR>", { desc = "repeat action for selection" })
