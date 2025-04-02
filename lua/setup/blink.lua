@@ -12,7 +12,7 @@ M.opts = {
 		['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
 		['<C-l>'] = { 'accept', 'fallback' },
 		['<C-K>'] = { 'show_documentation', "hide_documentation", 'fallback' },
-		['<C-e>'] = { 'select_and_accept', 'fallback' },
+		['<C-CR>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
 				if cmp.cancel() then
@@ -65,6 +65,16 @@ M.opts = {
 			Operator = 'oper',
 			TypeParameter = 'type',
 		},
+	},
+	cmdline = {
+		keymap = {
+			['<C-k>'] = { 'select_prev', 'fallback' },
+			['<C-j>'] = { 'select_next', 'fallback' },
+			['<C-l>'] = { 'accept', 'fallback' },
+			['<C-CR>'] = { 'select_and_accept', 'fallback' },
+			['<CR>'] = { 'accept_and_enter', 'fallback' },
+
+		}
 	},
 
 	completion = {
