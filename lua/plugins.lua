@@ -2,7 +2,6 @@ return {
 	-- amend keymaps
 	-- Git related plugins
 	{ 'tpope/vim-fugitive', },
-	{ 'tpope/vim-rhubarb', },
 
 	-- Adds git releated signs to the gutter, as well as utilities for managing changes
 	{
@@ -156,7 +155,7 @@ return {
 	{
 		-- "obsidian-nvim/obsidian.nvim",
 		dir = "/home/maciej/.config/nvim/packages/obsidian.nvim/",		
-		lazy = true,
+		lazy = false,
 		version = '*',
 		ft = "markdown",
 		dependencies = {

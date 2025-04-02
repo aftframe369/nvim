@@ -17,7 +17,7 @@ end
 
 -- kolejność zostałą dobrana tak, aby maksymalizować funkcjonalość
 -- jak coś zesram w konfiguracji
-vim.g.python3_host_prog = '/home/maciej/.config/nvim/PyProvider/bin/python3'
+vim.g.python3_host_prog = '/home/maciej/.config/nvim/pythonProvider/bin/python3'
 
 require 'myconfig'
 require 'mappings'

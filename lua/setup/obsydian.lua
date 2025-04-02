@@ -32,6 +32,7 @@ M.opts = {
 	daily_notes = {
 		folder = "Logi",
 		alias_format = "%d %m %Y",
+		template = 'templatka.md'
 	},
 
 	disable_frontmatter = true,
@@ -57,13 +58,6 @@ M.opts = {
 			end,
 			opts = { noremap = false, expr = false, buffer = true },
 		},
-		["<leader>q"] = {
-			action = function()
-				return vim.cmd(":ObsidianQuickSwitch")
-			end,
-			opts = { noremap = false, expr = false, buffer = true },
-		},
-
 	},
 	note_id_func = function(title)
 		return title
@@ -97,6 +91,7 @@ M.opts = {
 	},
 
 	templates = {
+		folder = "Logi/templatka",
 		substitutions = {
 			date = function()
 				return os.date("%d %M %Y", os.time())
