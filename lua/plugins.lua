@@ -152,10 +152,11 @@ return {
 	{ 'ggandor/leap.nvim', init = require('setup.leap') },
 
 	-- obsydian integration plugin
+	-- personal fork, that works with blink 1.0
 	{
-		-- "obsidian-nvim/obsidian.nvim",
-		dir = "/home/maciej/.config/nvim/packages/obsidian.nvim/",		
-		lazy = false,
+		"aftframe369/obsidian.nvim",
+		-- dir = "/home/maciej/.programy/obsidian.nvim/",
+		lazy = true,
 		version = '*',
 		ft = "markdown",
 		dependencies = {
