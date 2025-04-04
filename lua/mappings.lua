@@ -10,6 +10,8 @@ remap(all, 'D', 'dd')
 -- Q przesuwa do początku SŁOWA na lewo. Bardziej intuicyjne, bo na lewo od 'w'
 remap(all, 'q', 'b')
 remap(all, 'Q', 'B')
+remap(all, 'B', 'q')
+remap(all, '<c-b>', '@@')
 
 --Ctrl backspace usuwa całe słowo w insert mode
 remap('i', '<C-BS>', '<C-W>')
