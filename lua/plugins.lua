@@ -13,7 +13,7 @@ return {
 				change = { text = '~' },
 				delete = { text = '_' },
 				topdelete = { text = '‾' },
-				changedelete = { text = '~' },
+				changedelete = { text = '!' },
 			},
 		},
 	},
@@ -66,6 +66,7 @@ return {
 	},
 
 	{ 'nvimtools/none-ls.nvim' },
+
 	{
 		"zeioth/none-ls-autoload.nvim",
 		event = "BufEnter",
@@ -75,7 +76,7 @@ return {
 			"nvimtools/none-ls.nvim"
 		},
 	},
-	{ 'dccsillag/magma-nvim' },
+	-- { 'dccsillag/magma-nvim' },
 
 
 	-- autocompletion

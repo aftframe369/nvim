@@ -27,7 +27,7 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
 	function()
 		vim.api.nvim_command(":w")
 		vim.fn.jobstart(
-			table.concat(render_in_latex(), " "),
+			table.concat(render_in_latex("hidden"), " "),
 			{
 				on_stdout = function(chanid, data, name)
 					print("stdout, data:" .. table.concat(data, ""))
@@ -43,4 +43,16 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
 	end
 )
 
-vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', ':!zathura "%:r.pdf" & disown<CR>')
+vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', function()
+	if vim.fn.filereadable(vim.fn.expand("%:r") .. ".pdf") > 0 then
+		vim.cmd("!zathura %:r.pdf")
+	else
+		local hidden_pdf = vim.fn.expand("%:h") .. "/." .. vim.fn.expand("%:t:r") .. '.pdf'
+		if vim.fn.filereadable(hidden_pdf) then
+			vim.cmd("!zathura " .. hidden_pdf)
+		else
+			print("brak plików")
+		end
+	end
+end
+)
