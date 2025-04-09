@@ -16,7 +16,7 @@ M.opts = {
 		['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 		['<C-d>'] = { 'show_documentation', "scroll_documentation_down", 'fallback' },
 
-		['<C-;>'] = { 'select_and_accept', 'fallback' },
+		['<c-y>'] = { 'select_and_accept', 'fallback' },
 		['<C-CR>'] = { 'select_and_accept', 'fallback' },
 		['<Esc>'] = {
 			function(cmp)
@@ -33,6 +33,7 @@ M.opts = {
 		['<C-H>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
 		['<C-x>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end, 'fallback' }
 	},
+
 	appearance = {
 		nerd_font_variant = '',
 		use_nvim_cmp_as_default = true,
@@ -76,7 +77,6 @@ M.opts = {
 			['<C-l>'] = { 'accept', 'fallback' },
 			['<C-CR>'] = { 'select_and_accept', 'fallback' },
 			['<CR>'] = { 'accept_and_enter', 'fallback' },
-
 		}
 	},
 
@@ -102,12 +102,22 @@ M.opts = {
 	sources = {
 		default = { 'lsp', 'path', 'snippets' },
 		per_filetype = {
-			markdown = { "buffer" },
+			markdown = { "buffer", "snippets" },
 			sh = { "buffer" },
+			lua = { "lazydev", 'lsp', 'path', 'snippets' }
 		},
-		providers = {}
+		providers = {
+			lazydev = {
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				-- make lazydev completions top priority (see `:h blink.cmp`)
+				score_offset = 100,
+			},
+		}
+
 	},
 	fuzzy = { implementation = "prefer_rust_with_warning" }
+
 }
 
 M.init = function()

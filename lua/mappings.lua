@@ -10,6 +10,8 @@ remap(all, 'D', 'dd')
 -- Q przesuwa do początku SŁOWA na lewo. Bardziej intuicyjne, bo na lewo od 'w'
 remap(all, 'q', 'b')
 remap(all, 'Q', 'B')
+remap(all, 'B', 'q')
+remap(all, '<c-b>', '@@')
 
 --Ctrl backspace usuwa całe słowo w insert mode
 remap('i', '<C-BS>', '<C-W>')
@@ -154,9 +156,9 @@ remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", { desc = "Change spellang
 -- new recording mapping
 remap("n", "<A-r>", "q", { desc = "recording" })
 
-remap("n", "<leader>o", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
+remap("n", "<leader>O", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
 remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
-remap("n", "<leader>O", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	pattern = { "*" },
