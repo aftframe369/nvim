@@ -175,3 +175,6 @@ remap('n', '<leader>qs', function() vim.cmd(":ObsidianQuickSwitch") end, { desc 
 
 
 remap("x", ".", ":norm .<CR>", { desc = "repeat action for selection" })
+
+remap(all, "<leader>`", ":cd %:h<CR>", { desc = "Set file current dir" })
+
