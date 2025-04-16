@@ -64,24 +64,21 @@ null_ls.setup({
 	on_attach = on_attach,
 	sources = {
 		-- null_ls.builtins.diagnostics.mypy,
-		--
-		-- null_ls.builtins.formatting.markdownlint.with({
-		-- 	filetypes = { "markdown" },
-		-- 	extra_args = { "--enable", "MD001", "MD005", "MD010", "MD010", "MD022", "MD011", "MD023", "MD031", "MD032", "MD037", "--",
-		-- 		"--disable", "MD009", "MD012", "MD013",  "MD026", "--"
-		-- 	}
 		
 		null_ls.builtins.formatting.prettier.with({
-			filetypes = { "markdown" }
+			filetypes = { "markdown"}
+
 		}),
 
 		null_ls.builtins.formatting.clang_format.with({
 			extra_args = { "-style=", "{IndentWidth: 4}" }
 		}),
 
-		null_ls.builtins.formatting.sql_formatter.with({
-			extra_args = { "-c", vim.fn.expand("~/.config/nvim/packages/sql_config.json") }
+		null_ls.builtins.formatting.sqlfluff.with({
+			extra_args = {"--dialect", "mariadb"}
 		}),
+
+
 	},
 })
 

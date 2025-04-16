@@ -104,7 +104,8 @@ M.opts = {
 		per_filetype = {
 			markdown = { "buffer", "snippets" },
 			sh = { "buffer" },
-			lua = { "lazydev", 'lsp', 'path', 'snippets' }
+			lua = { "lazydev", 'lsp', 'path', 'snippets' },
+			sql = { "buffer" },
 		},
 		providers = {
 			lazydev = {
