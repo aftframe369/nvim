@@ -11,8 +11,7 @@ return {
 			["ge"] = "actions.open_external",
 			["yp"] = "actions.yank_entry",
 			["<C-c>"] = "actions.copy_to_system_clipboard"
+		},
 
-
-		}
 	}
 }
