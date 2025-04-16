@@ -72,7 +72,7 @@ null_ls.setup({
 		-- 	}
 		
 		null_ls.builtins.formatting.prettier.with({
-			filetypes = { "markdown" }
+			filetypes = { "markdown", "yaml" }
 		}),
 
 		null_ls.builtins.formatting.clang_format.with({

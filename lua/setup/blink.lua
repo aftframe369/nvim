@@ -38,7 +38,7 @@ M.opts = {
 		nerd_font_variant = '',
 		use_nvim_cmp_as_default = true,
 		kind_icons = {
-			Text = '☰',
+			Text = '§',
 			Method = 'm()',
 			Function = 'f()',
 			Constructor = 'constructor',
@@ -60,7 +60,7 @@ M.opts = {
 			Keyword = 'id',
 			Constant = 'const',
 
-			Snippet = '☰x☰',
+			Snippet = '§x§',
 			Color = 'rgb',
 			File = 'file',
 			Reference = 'ref',
