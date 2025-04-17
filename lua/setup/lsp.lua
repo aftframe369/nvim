@@ -77,6 +77,13 @@ null_ls.setup({
 			extra_args = { "--dialect", "mariadb" }
 		}),
 
+		null_ls.builtins.diagnostics.sqlfluff.with({
+			condition = function()
+				return vim.g.Chromebook == false
+			end,
+
+			extra_args = { "--dialect", "mariadb" }
+		}),
 
 	},
 })
