@@ -1,4 +1,5 @@
 -- LSP settings.
+
 local on_attach = require('setup.lsp_onattach')
 
 local servers = {
@@ -69,8 +70,9 @@ null_ls.setup({
 			filetypes = { "markdown", "yaml", "javascript" }
 		}),
 
-		null_ls.builtins.formatting.clang_format.with({
-			extra_args = { "-style=", "{IndentWidth: 4}" }
+		null_ls.builtins.formatting.uncrustify.with({
+			filetypes = { "cpp" },
+			extra_args = {"-c", "-"}
 		}),
 
 		null_ls.builtins.formatting.sqlfluff.with({

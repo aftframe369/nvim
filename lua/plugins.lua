@@ -173,4 +173,8 @@ return {
 	{ 'dhruvasagar/vim-table-mode',  init = require('setup.vim_table_mode') },
 	{ 'norcalli/nvim-colorizer.lua', opts = {} },
 
-}
+
+	 {'mfussenegger/nvim-jdtls'},
+ }
+
+
