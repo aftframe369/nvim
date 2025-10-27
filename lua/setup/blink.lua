@@ -1,5 +1,4 @@
 local M = {}
-
 M.deps = {
 	"rafamadriz/friendly-snippets",
 }
@@ -11,8 +10,6 @@ M.opts = {
 		['<C-k>'] = { 'select_prev', 'snippet_backward', 'fallback' },
 		['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
 		['<C-l>'] = { 'accept', 'fallback' },
-		['<C-K>'] = { 'show_documentation', "hide_documentation", 'fallback' },
-
 		['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 		['<C-d>'] = { 'show_documentation', "scroll_documentation_down", 'fallback' },
 
@@ -88,6 +85,16 @@ M.opts = {
 			},
 		},
 
+		ghost_text = {
+			enabled = function() return 
+				vim.bo.filetype == 'html' or
+				vim.bo.filetype == 'htmldjango' or
+				vim.bo.filetype == 'css'
+				end,
+			show_without_selection = true,
+			show_without_menu = true,
+		},
+
 		documentation = {
 			auto_show = false,
 			window = { border = 'single' },
@@ -106,6 +113,7 @@ M.opts = {
 			sh = { "buffer" },
 			lua = { "lazydev", 'lsp', 'path', 'snippets' },
 			sql = { "buffer" },
+			html = { "buffer", "lsp", "snippets" }
 		},
 		providers = {
 			lazydev = {

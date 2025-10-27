@@ -10,6 +10,9 @@ remap(all, 'D', 'dd')
 -- Q przesuwa do początku SŁOWA na lewo. Bardziej intuicyjne, bo na lewo od 'w'
 remap(all, 'q', 'b')
 remap(all, 'Q', 'B')
+
+-- new recording mapping
+remap("n", "<A-r>", "q", { desc = "recording" })
 remap(all, 'B', 'q')
 remap(all, '<c-b>', '@@')
 
@@ -153,8 +156,6 @@ remap("n", "z/", function() vim.fn.feedkeys('1z=') end, { desc = "Popraw na pier
 remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw następny automatycznie" })
 remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", { desc = "Change spellang" })
 
--- new recording mapping
-remap("n", "<A-r>", "q", { desc = "recording" })
 
 remap("n", "<leader>o", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
 remap("n", "<leader>O", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })

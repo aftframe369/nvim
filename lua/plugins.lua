@@ -120,7 +120,7 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround',  init = require('setup.surround') },
+	{ 'tpope/vim-surround',    init = require('setup.surround') },
 
 	{
 		'windwp/nvim-autopairs',
@@ -170,5 +170,7 @@ return {
 	},
 
 	-- table mode, :tableMode or <leader>tm to enter table.
-	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') },
+	{ 'dhruvasagar/vim-table-mode',  init = require('setup.vim_table_mode') },
+	{ 'norcalli/nvim-colorizer.lua', opts = {} },
+
 }

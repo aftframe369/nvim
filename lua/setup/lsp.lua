@@ -66,7 +66,7 @@ null_ls.setup({
 		-- null_ls.builtins.diagnostics.mypy,
 
 		null_ls.builtins.formatting.prettier.with({
-			filetypes = { "markdown", "yaml" }
+			filetypes = { "markdown", "yaml", "javascript" }
 		}),
 
 		null_ls.builtins.formatting.clang_format.with({
@@ -76,6 +76,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "mariadb" }
 		}),
+
+		null_ls.builtins.formatting.djhtml,
 
 		null_ls.builtins.diagnostics.sqlfluff.with({
 			condition = function()
