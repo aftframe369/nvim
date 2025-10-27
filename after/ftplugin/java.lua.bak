@@ -1,5 +1,5 @@
 local on_attach = require('setup.lsp_onattach')
-
+print(on_attach)
 local config = {
 	cmd = { '/home/maciej/.config/nvim/packages/jdtls/bin/jdtls' },
 	root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
@@ -16,22 +16,7 @@ local config = {
 require('jdtls').start_or_attach(config)
 
 
-local cmd = 'javac "%"; java "%"'
-local head = vim.fn.expand("%:h")
-
-vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
-	function()
-		vim.cmd("write")
-		local rd = vim.fn.filereadable("./Makefile")
-		if rd==1 then
-			vim.cmd("!make test")
-		else
-			vim.print("no makefile")
-			vim.cmd("!" .. cmd)
-		end
-	end,
-	{ buffer = 0 }
-)
-
+vim.keymap.set({ 'n', 'i', 'v' }, '<F5>', '<Esc>:w<CR>:! javac "%"; java % <CR>')
+--
 --save, run script, open in new terminal in split window
-vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', ':w<CR>:tabnew %<CR>:term ' .. cmd)
+vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', ':w<CR>:tabnew %<CR>:term javac "%"; java % <CR>')

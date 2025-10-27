@@ -171,4 +171,8 @@ return {
 
 	-- table mode, :tableMode or <leader>tm to enter table.
 	{ 'dhruvasagar/vim-table-mode', init = require('setup.vim_table_mode') },
-}
+
+ {'mfussenegger/nvim-jdtls'},
+ }
+
+
