@@ -152,8 +152,11 @@ return {
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
-	{ 'ggandor/leap.nvim',           init = require('setup.leap') },
-
+	{
+		url = "https://codeberg.org/andyg/leap.nvim",
+		init = require('setup.leap')
+	},
+	
 	-- obsydian integration plugin
 	-- personal fork, that works with blink 1.0
 	{
