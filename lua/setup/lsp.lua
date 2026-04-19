@@ -67,7 +67,8 @@ null_ls.setup({
 		-- null_ls.builtins.diagnostics.mypy,
 
 		null_ls.builtins.formatting.prettier.with({
-			filetypes = { "markdown", "yaml", "javascript" }
+			filetypes = { "markdown", "yaml", "javascript", "css" },
+			extra_args = {"--tab-width", "4"}
 		}),
 
 		null_ls.builtins.formatting.uncrustify.with({
@@ -79,7 +80,6 @@ null_ls.setup({
 			extra_args = { "--dialect", "mariadb" }
 		}),
 
-		null_ls.builtins.formatting.djhtml,
 
 		null_ls.builtins.diagnostics.sqlfluff.with({
 			condition = function()

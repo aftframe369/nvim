@@ -41,7 +41,7 @@ vim.o.mousescroll = 'ver:3'
 if vim.g.Chromebook == true then
 	vim.o.clipboard = ''
 else
-	vim.o.clipboard = 'unnamed'
+	vim.o.clipboard = ''
 end
 
 -- Enable break indent
@@ -76,6 +76,8 @@ vim.g.kp = ':help'
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.opt.splitright = true
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
@@ -83,4 +85,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-vim.opt.splitright = true
+
+vim.api.nvim_create_autocmd('VimLeave', {
+  callback = function()
+		vim.cmd(":mksession! ~/.config/nvim/.session.vim")
+  end,
+})
+

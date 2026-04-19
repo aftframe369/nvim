@@ -161,12 +161,25 @@ remap("n", "<leader>o", function() vim.fn.append(vim.fn.line("."), "") end, { de
 remap("n", "<leader>O", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
 remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
 
+
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	pattern = { "*" },
 	callback = function()
 		vim.keymap.set(
 			"n", "<leader><leader>",
 			"<C-o>",
+			{ buffer = 0 }
+		)
+		return true
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.keymap.set(
+			"n", "sr",
+			":source ~/.config/nvim/.session.vim",
 			{ buffer = 0 }
 		)
 		return true
