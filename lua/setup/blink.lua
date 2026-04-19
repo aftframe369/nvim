@@ -26,10 +26,10 @@ M.opts = {
 			end
 			, 'fallback' },
 
-
-		['<C-H>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
-		['<C-x>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end, 'fallback' }
+		['<C-h>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+		['<C-p>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end, 'fallback' }
 	},
+
 
 	appearance = {
 		nerd_font_variant = '',
@@ -67,11 +67,13 @@ M.opts = {
 			TypeParameter = 'type',
 		},
 	},
+
 	cmdline = {
 		keymap = {
 			['<C-k>'] = { 'select_prev', 'fallback' },
 			['<C-j>'] = { 'select_next', 'fallback' },
 			['<C-l>'] = { 'accept', 'fallback' },
+			['<C-h>'] = { 'cancel', 'fallback' },
 			['<C-CR>'] = { 'select_and_accept', 'fallback' },
 			['<CR>'] = { 'accept_and_enter', 'fallback' },
 		}
@@ -86,11 +88,12 @@ M.opts = {
 		},
 
 		ghost_text = {
-			enabled = function() return 
-				vim.bo.filetype == 'html' or
-				vim.bo.filetype == 'htmldjango' or
-				vim.bo.filetype == 'css'
-				end,
+			enabled = function()
+				return
+					vim.bo.filetype == 'html' or
+					vim.bo.filetype == 'htmldjango' or
+					vim.bo.filetype == 'css'
+			end,
 			show_without_selection = true,
 			show_without_menu = true,
 		},
@@ -113,7 +116,9 @@ M.opts = {
 			sh = { "buffer" },
 			lua = { "lazydev", 'lsp', 'path', 'snippets' },
 			sql = { "buffer" },
-			html = { "buffer", "lsp", "snippets" }
+			html = { "buffer", "lsp", "snippets" },
+			javascript = { "buffer", "lsp", "snippets" },
+
 		},
 		providers = {
 			lazydev = {

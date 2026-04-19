@@ -1,11 +1,12 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.config').setup {
 	ensure_installed = {
 		'bash',
 		'c', 'cpp',
 		'html',
 		'java',
+		"javascript",
 		'lua',
 		'markdown', 'markdown_inline',
 		'python',
@@ -42,6 +43,8 @@ require('nvim-treesitter.configs').setup {
 				['if'] = '@function.inner',
 				['ac'] = '@class.outer',
 				['ic'] = '@class.inner',
+				['ab'] = '@block.outer',
+				['ib'] = '@block.inner',
 			},
 		},
 		move = {
@@ -49,7 +52,7 @@ require('nvim-treesitter.configs').setup {
 			set_jumps = false, -- whether to set jumps in the jumplist
 
 			goto_next_start = {
-				-- [']]'] = "@.*.inner"
+				[']p'] = '@block.inner',
 			},
 
 			goto_next_end = {
@@ -57,7 +60,7 @@ require('nvim-treesitter.configs').setup {
 
 			},
 			goto_previous_start = {
-				-- ['[['] = "@function.inner",
+				['[p'] = '@block.inner',
 			},
 
 			goto_previous_end = {

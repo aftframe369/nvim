@@ -108,8 +108,8 @@ return {
 			sections = {
 				lualine_a = { 'mode' },
 				lualine_b = { "os.date('%d-%m  %H:%M')" },
-				lualine_c = { "filename", "diff" },
-				lualine_x = { "vim.fn.getcwd():gsub('/home/maciej', '~')", 'filetype' }
+				lualine_x = { "filename", "diff" },
+				lualine_c = { "vim.fn.getcwd():gsub('/home/maciej', '~')", 'filetype' }
 			}
 		},
 	},
@@ -146,11 +146,16 @@ return {
 	},
 
 	--Oil
-	{ require("setup.oil") },
+	{
+		'stevearc/oil.nvim', opts = require('setup.oil').opts
+	},
 
 	-- leap to 2char sequence with s, or gs backwards.
 	-- Two custom mappings nothing more, quite enough
-	{ 'ggandor/leap.nvim', init = require('setup.leap') },
+	{
+		url = "https://codeberg.org/andyg/leap.nvim",
+		init = require('setup.leap')
+	},
 
 	-- obsydian integration plugin
 	-- personal fork, that works with blink 1.0
@@ -174,7 +179,5 @@ return {
 	{ 'norcalli/nvim-colorizer.lua', opts = {} },
 
 
-	 {'mfussenegger/nvim-jdtls'},
- }
-
-
+	{ 'mfussenegger/nvim-jdtls' },
+}

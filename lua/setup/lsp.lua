@@ -18,19 +18,12 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
 	ensure_installed = vim.tbl_keys(servers),
+	automatic_enable = true,
 }
 
-mason_lspconfig.setup_handlers {
-	function(server_name)
-		require('lspconfig')[server_name].setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = servers[server_name],
-		}
-	end,
-};
 
-require 'lspconfig'.pyright.setup({
+-- require 'lspconfig'.pyright.setup({
+vim.lsp.config( "pyright", {
 	on_attach = on_attach,
 	settings = {
 		pyright = { autoImportCompletion = true, },
@@ -43,9 +36,12 @@ require 'lspconfig'.pyright.setup({
 			}
 		}
 	}
-})
+ }
+)
+vim.lsp.enable("pyright")
 
-require 'lspconfig'.emmet_ls.setup({
+-- require 'lspconfig'.emmet_ls.setup({
+vim.lsp.config( "emmet_ls", {
 	-- on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
@@ -58,6 +54,7 @@ require 'lspconfig'.emmet_ls.setup({
 		},
 	}
 })
+vim.lsp.enable("emmet_ls")
 
 local null_ls = require("null-ls")
 
@@ -67,7 +64,8 @@ null_ls.setup({
 		-- null_ls.builtins.diagnostics.mypy,
 
 		null_ls.builtins.formatting.prettier.with({
-			filetypes = { "markdown", "yaml", "javascript" }
+			filetypes = { "markdown", "yaml", "javascript", "css" },
+			extra_args = {"--tab-width", "4"}
 		}),
 
 		null_ls.builtins.formatting.uncrustify.with({
@@ -79,7 +77,6 @@ null_ls.setup({
 			extra_args = { "--dialect", "mariadb" }
 		}),
 
-		null_ls.builtins.formatting.djhtml,
 
 		null_ls.builtins.diagnostics.sqlfluff.with({
 			condition = function()
