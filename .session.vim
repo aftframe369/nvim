@@ -4,22 +4,18 @@ let v:this_session=expand("<sfile>:p")
 doautoall SessionLoadPre
 silent only
 silent tabonly
-cd ~/Dokumenty/Studia/EIT/MNIO
+cd ~/.config/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +19 metoda\ brenta.md
-badd +24 ~/.config/nvim/after/ftplugin/markdown.lua
-badd +27 ~/.config/nvim/lua/utils/pandoc.lua
-badd +32 zloty_podzial.md
+badd +5 .gitignore
 argglobal
 %argdel
-$argadd metoda\ brenta.md
-edit zloty_podzial.md
+$argadd .gitignore
+edit .gitignore
 argglobal
-balt metoda\ brenta.md
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -30,12 +26,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((11 * winheight(0) + 22) / 45)
+let s:l = 5 - ((4 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 026|
+keepjumps 5
+normal! 012|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

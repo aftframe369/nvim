@@ -18,8 +18,12 @@ return {
 		},
 	},
 
-	-- "gc" to comment visual regions/lines
-	{ 'numToStr/Comment.nvim', opts = {} },
+	-- -- "gc" to comment visual regions/lines
+	-- { 'numToStr/Comment.nvim', opts = {} },
+	-- RIP
+	-- Teraz wbudowane w neovim
+	
+	
 
 	-- Fuzzy Finder (files, lsp, etc)
 	{
@@ -48,6 +52,7 @@ return {
 		build = ":TSUpdate",
 	},
 
+
 	{
 		'anuvyklack/keymap-amend.nvim',
 		init = function()
@@ -65,13 +70,14 @@ return {
 		end
 	},
 
-	{ 'nvimtools/none-ls.nvim' },
-
+	{ 'nvimtools/none-ls.nvim'}, 
+	{ 'neovim/nvim-lspconfig' },
 	{
 		"zeioth/none-ls-autoload.nvim",
 		event = "BufEnter",
 		dependencies = {
 			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 			"zeioth/none-ls-external-sources.nvim",
 			"nvimtools/none-ls.nvim"
 		},
@@ -120,7 +126,7 @@ return {
 	-- Si) to sourround with () in something
 	-- Sd) to delete surrounding ()
 	-- Sc)] to change surrounding () to []
-	{ 'tpope/vim-surround',    init = require('setup.surround') },
+	{ 'tpope/vim-surround',           init = require('setup.surround') },
 
 	{
 		'windwp/nvim-autopairs',

@@ -34,6 +34,7 @@ require('lazy').setup({
 	require 'plugins'
 }, {})
 
+-- vim.cmd.colorscheme 'everforest'
 vim.cmd.colorscheme 'melange'
 
 require 'setup.treesitter'

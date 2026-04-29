@@ -2,4 +2,4 @@
 PyProvider/
 pythonProvider/
 packages/
-
+.session.vim

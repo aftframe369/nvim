@@ -38,10 +38,10 @@ vim.keymap.set({ 'n', 'v' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, si
 vim.keymap.set({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 --use J and K to move lines up and down
-remap('n', 'K', ':m .-2<CR>==')
-remap('n', 'J', ':m .+1<CR>==')
-remap("v", "J", ":m '>+1<CR>gv=gv")
-remap("v", "K", ":m '<-2<CR>gv=gv")
+remap('n', 'K', ':m -2<CR>')
+remap('n', 'J', ':m +1<CR>')
+remap("v", "J", ":m '>+1<CR>gv")
+remap("v", "K", ":m -2<CR>gv")
 remap({ 'n', 'v' }, 'L', 'J', { noremap = true })
 remap({ 'n', 'v' }, 'H', 'K', { noremap = true })
 
@@ -194,3 +194,14 @@ remap("x", ".", ":norm .<CR>", { desc = "repeat action for selection" })
 
 remap(all, "<leader>`", ":cd %:h<CR>", { desc = "Set file current dir" })
 
+-- Disable default lsp mappings
+vim.api.nvim_del_keymap("n", "gra") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("x", "gra") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("n", "gri") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("n", "grn") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("n", "grr") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("n", "grt") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("n", "gO") -- vim.lsp.buf...
+
+vim.api.nvim_del_keymap("n", "]d") -- vim.lsp.buf...
+vim.api.nvim_del_keymap("n", "]D") -- vim.lsp.buf...
