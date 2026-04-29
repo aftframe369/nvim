@@ -1,14 +1,10 @@
 return {
-    {
-        'cocopon/iceberg.vim',
-    },
-    { --
-        'rose-pine/neovim',
-        name = 'rose-pine',
-    };
-
-    {
-        'haystackandroid/rusticated',
-    };
-    { "savq/melange-nvim" },
+	{ 'cocopon/iceberg.vim' },
+	{
+		'rose-pine/neovim',
+		name = 'rose-pine'
+	},
+	{ 'haystackandroid/rusticated', },
+	{ "savq/melange-nvim" },
+	{ "sainnhe/everforest" },
 }

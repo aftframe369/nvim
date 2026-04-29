@@ -16,22 +16,76 @@ local config = {
 require('jdtls').start_or_attach(config)
 
 
+
 local cmd = 'javac "%"; java "%"'
 local head = vim.fn.expand("%:h")
 
+local function exec_java(term)
+	term = term or false
+	local pom = vim.fn.filereadable("./pom.xml")
+	local makefile = vim.fn.filereadable("./Makefile")
+	if pom == 1 then
+		if term==false then
+			vim.cmd("!mvnd exec:exec")
+		else
+			vim.cmd("term mvnd exec:exec")
+		end
+	else
+		if makefile == 1 then
+			vim.cmd("!make test")
+		else
+			if term==false then
+				vim.cmd("!" .. cmd)
+			else
+				vim.cmd("term " .. cmd)
+			end
+			vim.print("no pom.xml or makefile")
+		end
+	end
+end
+
+-- build with mvn if pom exists
+-- pamiętaj aby dodać rzeczy dot Mojohaus i wtyczki exec
+-- na dole przykład
 vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
 	function()
 		vim.cmd("write")
-		local rd = vim.fn.filereadable("./Makefile")
-		if rd==1 then
-			vim.cmd("!make test")
-		else
-			vim.print("no makefile")
-			vim.cmd("!" .. cmd)
-		end
+		exec_java()
 	end,
 	{ buffer = 0 }
 )
 
 --save, run script, open in new terminal in split window
-vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', ':w<CR>:tabnew %<CR>:term ' .. cmd)
+vim.keymap.set({ 'n', 'i', 'v' }, '<F6>',
+	function()
+		vim.cmd("write")
+		exec_java(true)
+	end
+)
+
+
+-- <plugins>
+--       <plugin>
+--         <groupId>org.codehaus.mojo</groupId>
+--         <artifactId>exec-maven-plugin</artifactId>
+--         <version>3.6.3</version>
+--         <executions>
+--           <execution>
+--             <goals>
+--               <goal>exec</goal>
+--             </goals>
+--           </execution>
+--         </executions>
+--         <configuration>
+--           <executable>java</executable>
+--           <arguments>
+--             <argument>-classpath</argument>
+--             <classpath />
+--             <argument>org.glinski.Main</argument>
+--           </arguments>
+--           <environmentVariables>
+--             <LANG>pl_PL</LANG>
+--           </environmentVariables>
+--         </configuration>
+--       </plugin>
+--     </plugins>

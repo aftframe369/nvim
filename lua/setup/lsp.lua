@@ -1,29 +1,24 @@
 -- LSP settings.
 
-local on_attach = require('setup.lsp_onattach')
-
-local servers = {
-	pyright = {},
-
-	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-		},
-	},
-}
-
--- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
+require("mason").setup()
 mason_lspconfig.setup {
-	ensure_installed = vim.tbl_keys(servers),
+	ensure_installed = {
+		lua_ls = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+			},
+		},
+	},
 	automatic_enable = true,
 }
 
+local on_attach = require('setup.lsp_onattach')
 
 -- require 'lspconfig'.pyright.setup({
-vim.lsp.config( "pyright", {
+vim.lsp.config("pyright", {
 	on_attach = on_attach,
 	settings = {
 		pyright = { autoImportCompletion = true, },
@@ -36,12 +31,18 @@ vim.lsp.config( "pyright", {
 			}
 		}
 	}
- }
+}
 )
 vim.lsp.enable("pyright")
 
+vim.lsp.config("lua_ls", {
+	on_attach = on_attach
+}
+)
+vim.lsp.enable({ 'lua_ls' })
+
 -- require 'lspconfig'.emmet_ls.setup({
-vim.lsp.config( "emmet_ls", {
+vim.lsp.config("emmet_ls", {
 	-- on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
@@ -56,21 +57,30 @@ vim.lsp.config( "emmet_ls", {
 })
 vim.lsp.enable("emmet_ls")
 
-local null_ls = require("null-ls")
 
+local null_ls = require("null-ls")
 null_ls.setup({
 	on_attach = on_attach,
 	sources = {
-		-- null_ls.builtins.diagnostics.mypy,
+
+		null_ls.builtins.formatting.tidy.with({
+			filetypes = { "xml" },
+			extra_args = { '-xml' }
+
+		}) ,
+		null_ls.builtins.diagnostics.tidy.with({
+			filetypes = { "xml" },
+			extra_args = { '-xml' }
+		}) ,
 
 		null_ls.builtins.formatting.prettier.with({
 			filetypes = { "markdown", "yaml", "javascript", "css" },
-			extra_args = {"--tab-width", "4"}
+			extra_args = { "--tab-width", "4" }
 		}),
 
 		null_ls.builtins.formatting.uncrustify.with({
 			filetypes = { "cpp" },
-			extra_args = {"-c", "-"}
+			extra_args = { "-c", "-" }
 		}),
 
 		null_ls.builtins.formatting.sqlfluff.with({

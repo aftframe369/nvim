@@ -56,3 +56,9 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<F6>', function()
 	end
 end
 )
+
+vim.keymap.set({ 'n', 'i', 'v' }, '<F7>', function()
+	vim.fn.feedkeys("o" ..
+		table.concat(render_in_latex(), " "))
+end
+)

@@ -5,8 +5,8 @@ local function func()
 	local leap = require('leap')
 	leap.opts.case_sensitive = false
 
-	remap(modes, 's', '<Plug>(leap-forward-to)')
-	remap(modes, 'gs', '<Plug>(leap-backward-to)')
+	remap(modes, 's', '<Plug>(leap-forward)')
+	remap(modes, 'gs', '<Plug>(leap-backward)')
 
 	vim.keymap.set({'n', 'x', 'o'}, 'gS', function ()
 	  require('leap.remote').action()

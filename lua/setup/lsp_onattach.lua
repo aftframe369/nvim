@@ -11,7 +11,7 @@ return function(_, bufnr)
 
 	nmap('<leader>lr', vim.lsp.buf.rename, '[R]ename')
 	nmap('<leader>lca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-	nmap('<leader>lf', function() vim.lsp.buf.format({ timeout_ms = 10000 }) end , '[L]SP [F]ormat')
+	nmap('<leader>lf', function() vim.lsp.buf.format({ timeout_ms = 10000 }) end, '[L]SP [F]ormat')
 
 	nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 	nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')

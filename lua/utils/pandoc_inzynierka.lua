@@ -3,7 +3,7 @@ local M = {}
 M.pandoc_md_2_pdf = function(hidden)
 	local self = vim.fn.expand("%")
 	local pdf = vim.fn.expand("%:r") .. ".pdf"
-	local library = "/home/maciej/Dokumenty/Biblioteka.bib"
+	local library = vim.fn.expand("%:h") .. "/library.bib"
 
 	if vim.fn.filereadable(library) == 0 then
 		print("Nie ma biblioteki")
@@ -24,7 +24,7 @@ M.pandoc_md_2_pdf = function(hidden)
 		"--citeproc",
 		library,
 		"-V", '"monofont: DejaVuSans Mono.ttf"',
-		"-M", "lang=pl-PL", "--highlight-style", "monochrome",
+		"-M", "lang=pl-PL", "--highlight-style", "espresso",
 		"-V", "csquotes=true"
 	}
 	return command
