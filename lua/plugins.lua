@@ -162,7 +162,7 @@ return {
 		url = "https://codeberg.org/andyg/leap.nvim",
 		init = require('setup.leap')
 	},
-
+	
 	-- obsydian integration plugin
 	-- personal fork, that works with blink 1.0
 	{

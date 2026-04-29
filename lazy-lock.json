@@ -16,7 +16,7 @@
   "melange-nvim": { "branch": "master", "commit": "ce42f6b629beeaa00591ba73a77d3eeac4cf28ce" },
   "none-ls-autoload.nvim": { "branch": "main", "commit": "9582a3f154c38867b039dc2982ea0b34deacd0ff" },
   "none-ls-external-sources.nvim": { "branch": "main", "commit": "aef18696a17e2de78954a7e13f110095d27ccf77" },
-  "none-ls.nvim": { "branch": "main", "commit": "899e93f9f10251d7220b188eba1b837c0ba27927" },
+  "none-ls.nvim": { "branch": "main", "commit": "e135361b9c11755ef6c48f54a2c970c509b56239" },
   "nvim-autopairs": { "branch": "master", "commit": "59bce2eef357189c3305e25bc6dd2d138c1683f5" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
   "nvim-jdtls": { "branch": "master", "commit": "77ccaeb422f8c81b647605da5ddb4a7f725cda90" },
