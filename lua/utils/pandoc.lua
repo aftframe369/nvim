@@ -24,7 +24,7 @@ M.pandoc_md_2_pdf = function(hidden)
 		"--citeproc",
 		library,
 		"-V", '"monofont: DejaVuSans Mono.ttf"',
-		"-M", "lang=pl-PL", "--highlight-style", "espresso",
+		"-M", "lang=pl-PL", "--highlight-style", "monochrome",
 		"-V", "csquotes=true"
 	}
 	return command
