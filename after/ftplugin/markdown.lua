@@ -25,18 +25,19 @@ local render_in_latex = pandoc.pandoc_md_2_pdf
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<F5>',
 	function()
+		std = ""
 		vim.api.nvim_command(":w")
 		vim.fn.jobstart(
-			table.concat(render_in_latex("hidden"), " "),
+			table.concat(render_in_latex(""), " "),
 			{
 				on_stdout = function(chanid, data, name)
-					print("stdout, data:" .. table.concat(data, ""))
+					std = std .. "stdout, data:" .. table.concat(data, "")
 				end,
 				on_stderr = function(chanid, data, name)
-					print(table.concat(data, ""))
+					std = std .. table.concat(data, "")
 				end,
 				on_exit = function(id, exitcode, event)
-					print("exit, exitcode:" .. vim.inspect(exitcode))
+					print(std .. "\nexit, exitcode:" .. vim.inspect(exitcode))
 				end,
 			}
 		)
