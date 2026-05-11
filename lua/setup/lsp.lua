@@ -41,6 +41,12 @@ vim.lsp.config("lua_ls", {
 )
 vim.lsp.enable({ 'lua_ls' })
 
+vim.lsp.config("clangd", {
+	on_attach = on_attach
+}
+)
+vim.lsp.enable({ 'lua_ls' })
+
 -- require 'lspconfig'.emmet_ls.setup({
 vim.lsp.config("emmet_ls", {
 	-- on_attach = on_attach,
