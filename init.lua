@@ -1,18 +1,16 @@
 vim.g.mapleader = ' '
 
+-- inne configi dla innych komputerów
 if vim.env.CHROMEBOOK == "1" then
 	vim.g.Chromebook = true
 else
 	vim.g.Chromebook = false
 end
 
-function color()
-	vim.o.background = 'light'
-	-- vim.o.background = 'dark'
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "Visual", { bg = "MistyRose", fg="black" })
-	vim.api.nvim_set_hl(0, "CursorLine", { bg="white", underline = false, sp = 'none' })
+if vim.env.DELL_LAPTOP == "1" then
+	vim.g.DELL = true
+else
+	vim.g.DELL = false
 end
 
 -- kolejność zostałą dobrana tak, aby maksymalizować funkcjonalość
@@ -25,7 +23,6 @@ require 'mappings'
 vim.o.cursorline = true
 vim.o.conceallevel = 1
 
-color()
 
 require 'lazypath'
 require('lazy').setup({
@@ -34,12 +31,16 @@ require('lazy').setup({
 	require 'plugins'
 }, {})
 
--- vim.cmd.colorscheme 'everforest'
-vim.cmd.colorscheme 'melange'
-
 require 'setup.treesitter'
 require 'setup.telescope'
 require 'setup.lsp'
 
--- load colors again if not crashed
-color()
+-- load colors again if all went well
+if vim.g.DELL == true then
+	vim.cmd.colorscheme 'rose-pine-moon'
+	require("utils.colors").color("dark")
+else
+	vim.cmd.colorscheme 'melange'
+	require("utils.colors").color("light")
+end
+

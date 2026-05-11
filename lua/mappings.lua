@@ -23,6 +23,9 @@ remap('i', '<C-del>', '<Esc>ce')
 
 --Enter in normal mode starts insert in line below
 remap('n', '<CR>', 'o')
+remap("n", "<leader>o", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
+remap("n", "<leader>O", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
+remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
 
 -- replace dolar with - as go to end of line, way better and next to 0 - start of line
 remap(all, '-', '$')
@@ -52,10 +55,13 @@ remap(all, 'b', '%')
 -- remap('n', '<leader>e', ':Explore<CR>')
 remap('n', '<leader>e', ':Oil<CR>')
 
+-- ctrl c aby skopiować
 remap({ 'v', 'n' }, '<C-c>', '"+y"')
+-- spacja spacja poprzedni bufor
 remap('n', '<leader><leader>', '<c-^>zz',
 	{ silent = false, noremap = true, desc = 'Previous buffer' })
 
+-- okna
 remap({ 'n', 'v' }, '<leader>ws', ':sp<CR>', { desc = 'Split Horizontal' })
 remap({ 'n', 'v' }, '<leader>wv', ':vs<CR>', { desc = 'Split Vertically' })
 remap({ 'n', 'v' }, '<leader>wn', ':new<CR>', { desc = 'New window' })
@@ -95,7 +101,6 @@ local after_bracket = [[(['"({[<>]\s?)@<=(\w|[:\-%$^&*#@!+|])]]
 local after_dot = [[(['"\>)}]\.)@<=(\w)]]
 local first_word = [[^(\w)]]
 local char_in_quotes = [[(['"])@<=\S?(['"])]]
-
 local pattern = [[\v]] ..
 	definition .. "|" ..
 	after_bracket .. "|" ..
@@ -116,16 +121,15 @@ vim.keymap.set('n', '<leader>so', ':w<CR>:so<cr>')
 vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.api.nvim_create_user_command("Dark", function()
-	vim.o.background = 'dark'
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+	vim.cmd.colorscheme  'melange'
+	require("utils.colors").color("dark")
 end, { desc = 'darkmode' })
 
 vim.api.nvim_create_user_command("Light", function()
-	vim.o.background = 'light'
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
+	vim.cmd.colorscheme  'melange'
+	require("utils.colors").color("light")
 end, { desc = 'lightmode' })
+
 
 remap(all, 'gx', function()
 	vim.fn.execute(":!xdg-open " .. vim.fn.expand("<cfile>"))
@@ -136,8 +140,7 @@ remap(all, '<leader>gp', ":!/home/maciej/.config/dotfiles/pushnotes.sh push /hom
 remap(all, '<leader>gd', ":!/home/maciej/.config/dotfiles/pushnotes.sh pull /home/maciej/Dokumenty/kisling/<CR>",
 	{ desc = "pullnotes" })
 
--- remap("n", "<leader>sv", ":source $MYVIMRC<CR>") nie działa bo lazy nie lubi reloadów
-
+-- spellcheck
 remap("n", "<leader>sc", function()
 		print(vim.opt.spell:get())
 		if vim.opt.spell:get() == false then
@@ -154,12 +157,7 @@ remap("n", "zN", "[s", { desc = "poprzedni błąd" })
 remap("n", "z<leader>", function() vim.fn.feedkeys('z=') end, { desc = "Menu poprawek" })
 remap("n", "z/", function() vim.fn.feedkeys('1z=') end, { desc = "Popraw na pierwszą sugestię" })
 remap("n", "z.", function() vim.fn.feedkeys(']s1z=') end, { desc = "Popraw następny automatycznie" })
-remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", { desc = "Change spellang" })
-
-
-remap("n", "<leader>o", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
-remap("n", "<leader>O", function() vim.fn.append(vim.fn.line(".") - 1, "") end, { desc = 'add line above' })
-remap("n", "<leader><CR>", function() vim.fn.append(vim.fn.line("."), "") end, { desc = 'add line below' })
+remap("n", "<leader>sl", ":set spelllang=en_gb,pl_pl", { desc = "Zmień spellang" })
 
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
@@ -188,7 +186,6 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
 vim.api.nvim_create_user_command("Kisling", "Oil ~/Dokumenty/kisling/", { desc = "kisling" })
 remap('n', '<leader>qs', function() vim.cmd(":ObsidianQuickSwitch") end, { desc = "ObsidianQuickSwitch" })
-
 
 remap("x", ".", ":norm .<CR>", { desc = "repeat action for selection" })
 

@@ -1,16 +1,16 @@
 -- My config
---
---
+
 -- Load a pretty theme before loading plugins, 
 -- helps keep sanity when messing with config and something breaks
 vim.cmd("so ~/.config/nvim/lua/setup/vim_colors/tokyonight-day.vim") 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(5, "NormalFloat", { bg = "none" })
-
 vim.api.nvim_set_hl(0, "Visual", { bg = "white" })
 vim.api.nvim_set_hl(0, "CursorLine", { underline = true, sp = 'white' })
 
-vim.o.cursorline = true
+
+
+vim.o.cursorline = true 
 vim.wo.relativenumber = true
 vim.wo.nu = true
 vim.cmd('set whichwrap+=<,>,h,l,[,]')
