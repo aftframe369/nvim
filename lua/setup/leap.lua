@@ -7,10 +7,11 @@ local function func()
 
 	remap(modes, 's', '<Plug>(leap-forward)')
 	remap(modes, 'gs', '<Plug>(leap-backward)')
+	remap(modes, 'gS', '<Plug>(leap-remote)')
 
-	vim.keymap.set({'n', 'x', 'o'}, 'gS', function ()
-	  require('leap.remote').action()
-	end)
+	-- vim.keymap.set({'n', 'x', 'o'}, 'gS', function ()
+	--   require('leap.remote').action()
+	-- end)
 
 	vim.api.nvim_set_hl(0, 'LeapLabel', { link = "Search", bold = true })
 end

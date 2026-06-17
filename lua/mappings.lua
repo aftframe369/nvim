@@ -122,12 +122,12 @@ vim.keymap.set('i', '<C-j>', '<Esc>')
 
 vim.api.nvim_create_user_command("Dark", function()
 	vim.cmd.colorscheme  'melange'
-	require("utils.colors").color("dark")
+	require("utils.colors").brightness("dark")
 end, { desc = 'darkmode' })
 
 vim.api.nvim_create_user_command("Light", function()
 	vim.cmd.colorscheme  'melange'
-	require("utils.colors").color("light")
+	require("utils.colors").brightness("light")
 end, { desc = 'lightmode' })
 
 

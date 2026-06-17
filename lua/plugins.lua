@@ -23,8 +23,6 @@ return {
 	-- RIP
 	-- Teraz wbudowane w neovim
 
-
-
 	-- Fuzzy Finder (files, lsp, etc)
 	{
 		'nvim-telescope/telescope.nvim',
@@ -72,6 +70,16 @@ return {
 
 	{ 'nvimtools/none-ls.nvim' },
 	{ 'neovim/nvim-lspconfig' },
+	{
+		'mfussenegger/nvim-dap',
+		init = require('setup.nvim-dap').init,
+		keys = require('setup.nvim-dap').keymaps,
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio"
+
+		}
+	},
 	{
 		"zeioth/none-ls-autoload.nvim",
 		event = "BufEnter",

@@ -4,16 +4,16 @@ let v:this_session=expand("<sfile>:p")
 doautoall SessionLoadPre
 silent only
 silent tabonly
-cd ~/.config/nvim
+cd ~
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +1 .session.vim
+badd +1 Dokumenty/kisling/Harcerstwo/Obóz\ wędrowny\ 2026/Maile_do_sluzb.md
 argglobal
 %argdel
-edit .session.vim
+edit Dokumenty/kisling/Harcerstwo/Obóz\ wędrowny\ 2026/Maile_do_sluzb.md
 argglobal
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -25,7 +25,7 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 11) / 23)
+let s:l = 1 - ((0 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt

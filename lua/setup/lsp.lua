@@ -4,18 +4,29 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 require("mason").setup()
 mason_lspconfig.setup {
-	ensure_installed = {
-		lua_ls = {
-			Lua = {
-				workspace = { checkThirdParty = false },
-				telemetry = { enable = false },
-			},
-		},
-	},
-	automatic_enable = true,
 }
 
 local on_attach = require('setup.lsp_onattach')
+
+vim.lsp.config("lua_ls", {
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+			format = {
+				enable = true,
+				defaultConfig = {
+					align_continuous_similar_call_args = "true",
+					-- align_call_args = "true",
+					-- align_function_params = "true",
+					-- end_statement_with_semicolon = "always"
+				}
+			}
+		},
+	}
+})
+vim.lsp.enable("lua_ls")
 
 -- require 'lspconfig'.pyright.setup({
 vim.lsp.config("pyright", {
@@ -24,8 +35,8 @@ vim.lsp.config("pyright", {
 		pyright = { autoImportCompletion = true, },
 		python = {
 			analysis = {
+				-- diagnosticMode = 'openFilesOnly',
 				autoSearchPaths = true,
-				diagnosticMode = 'openFilesOnly',
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = 'on'
 			}
@@ -35,17 +46,13 @@ vim.lsp.config("pyright", {
 )
 vim.lsp.enable("pyright")
 
-vim.lsp.config("lua_ls", {
-	on_attach = on_attach
-}
-)
-vim.lsp.enable({ 'lua_ls' })
-
 vim.lsp.config("clangd", {
+	root_dir = vim.fn.getcwd(),
 	on_attach = on_attach
+
 }
 )
-vim.lsp.enable({ 'lua_ls' })
+vim.lsp.enable({ 'clangd' })
 
 -- require 'lspconfig'.emmet_ls.setup({
 vim.lsp.config("emmet_ls", {
@@ -71,13 +78,13 @@ null_ls.setup({
 
 		null_ls.builtins.formatting.tidy.with({
 			filetypes = { "xml" },
-			extra_args = { '-xml' }
+			extra_args = { '-xml', '--vertical-space', 'yes' }
 
-		}) ,
+		}),
 		null_ls.builtins.diagnostics.tidy.with({
 			filetypes = { "xml" },
 			extra_args = { '-xml' }
-		}) ,
+		}),
 
 		null_ls.builtins.formatting.prettier.with({
 			filetypes = { "markdown", "yaml", "javascript", "css" },
