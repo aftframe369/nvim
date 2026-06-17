@@ -4,17 +4,24 @@ let v:this_session=expand("<sfile>:p")
 doautoall SessionLoadPre
 silent only
 silent tabonly
-cd ~/programowanie/studia/sim_ase
+cd ~/programowanie/pico/ase
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +1 .gitignore
+badd +52 src/main.c
+badd +218 ~/programowanie/pico/ase/src/tcp.c
+badd +14 ~/programowanie/pico/sdk/pico-examples/pico_w/wifi/blink/picow_blink.c
+badd +30 ~/programowanie/pico/sdk/pico-examples/pico_w/wifi/blink/picow_blink_fast_clock.c
+badd +191 ~/programowanie/pico/sdk/pico-examples/pico_w/wifi/tcp_client/picow_tcp_client.c
+badd +213 ~/programowanie/pico/sdk/pico-sdk/lib/lwip/src/include/lwip/pbuf.h
+badd +172 ~/.config/nvim/lua/plugins.lua
 argglobal
 %argdel
-edit .gitignore
+edit src/main.c
 argglobal
+balt ~/.config/nvim/lua/plugins.lua
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -25,12 +32,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 26) / 52)
+let s:l = 52 - ((30 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 03|
+keepjumps 52
+normal! 050|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
