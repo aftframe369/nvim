@@ -64,7 +64,6 @@ vim.keymap.set('n', '<leader>svi', function()
 			search_dirs = {
 				"~/.config/dotfiles/",
 				"~/.config/nvim/",
-				"~/programowanie/host/"
 			},
 			hidden = false,
 		}

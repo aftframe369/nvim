@@ -110,7 +110,7 @@ M.opts = {
 	},
 
 	sources = {
-		default = { 'lsp', 'path', 'snippets' },
+		default = {'buffer', 'lsp', 'path', 'snippets' },
 		per_filetype = {
 			markdown = { "buffer", "snippets" },
 			sh = { "buffer" },
