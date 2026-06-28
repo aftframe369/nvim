@@ -13,12 +13,7 @@ end
 
 M.brightness = function(color)
 	if color == "light" then
-		if vim.g.colors_name == 'rose-pine' then
-			vim.cmd.colorscheme 'rose-pine-dawn'
-		else
-			vim.cmd.colorscheme 'melange'
-		end
-			vim.cmd.colorscheme 'melange'
+		vim.cmd.colorscheme 'melange'
 	end
 	vim.o.background = color;
 	M.basic_highlights();

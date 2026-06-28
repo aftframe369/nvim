@@ -13,7 +13,7 @@ else
 	vim.g.DELL = false
 end
 
-vim.g.TERM_BRIGHTNESS = vim.env.COLORS
+vim.g.TERM_BRIGHTNESS = vim.env.TERM_BRIGHTNESS
 
 -- kolejność zostałą dobrana tak, aby maksymalizować funkcjonalość
 -- jak coś zesram w konfiguracji

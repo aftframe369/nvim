@@ -12,7 +12,6 @@ function init()
 
 	dap.configurations.c = {
 		{
-
 			name = "Launch",
 			type = "gdb",
 			request = "launch",
