@@ -1,5 +1,31 @@
 local M = {}
 
+local function find_executable(path)
+	local this_filename = vim.fn.expand("%:t:r")
+
+	local file = vim.fn.expand("%:p:r") .. ".o"
+	if (vim.fn.filereadable(file) == 1) then
+		return file
+	end
+	file = path .. '/target/main.o'
+	if (vim.fn.filereadable(file) == 1) then
+		return file
+	end
+	file = path .. '/build/main.o'
+	if (vim.fn.filereadable(file) == 1) then
+		return file
+	end
+	file = path .. '/build/' .. this_filename .. '.o'
+	if (vim.fn.filereadable(file) == 1) then
+		return file
+	end
+	file = path .. '/target/' .. this_filename .. '.o'
+	if (vim.fn.filereadable(file) == 1) then
+		return file
+	end
+	return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+end
+
 function init()
 	local dap = require("dap")
 	local ui = require("dapui")
@@ -12,14 +38,16 @@ function init()
 
 	dap.configurations.c = {
 		{
-
 			name = "Launch",
 			type = "gdb",
 			request = "launch",
+			-- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
 			program = function()
-				-- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-				return vim.fn.getcwd() .. '/target/main.o'
+				local file = find_executable(vim.fn.getcwd())
+				print("running: " .. file)
+				return file
 			end,
+
 			args = {}, -- provide arguments if needed
 			cwd = "${workspaceFolder}",
 			stopAtBeginningOfMainSubprogram = false,
@@ -27,10 +55,9 @@ function init()
 	}
 
 	dap.listeners.after.event_initialized['me.dap.keys'] = function()
-		vim.keymap.set("n", "<down>", dap.step_over)
-		vim.keymap.set("n", "<left>", dap.step_out)
+		vim.keymap.set("n", "<down>",  dap.step_over)
+		vim.keymap.set("n", "<left>",  dap.step_out)
 		vim.keymap.set("n", "<right>", dap.step_into)
-
 	end
 	local reset_keys = function()
 		pcall(vim.keymap.del, "n", "<down>")
