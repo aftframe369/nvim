@@ -3,7 +3,7 @@ M = {}
 M.basic_highlights = function()
 	vim.api.nvim_set_hl(0, "Normal",   { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-	vim.api.nvim_set_hl(0, "debugPC",  { bg = "black" })
+	vim.api.nvim_set_hl(0, "debugPC",  { link = "CursorColumn" })
 
 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "" }) -- floating bg = none
 	vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
